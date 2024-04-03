@@ -77,16 +77,6 @@ public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
             return responseBody.getAccessToken();
         }
 
-//        System.out.println("Respuesta cruda de Spotify: " + responseEntity);
-//
-//        if (responseEntity.getStatusCode() == HttpStatus.OK) {
-//            AccessTokenResponse responseBody = responseEntity.getBody();
-//            System.out.println("Exito en la peticion de code" + responseBody);
-//            return responseBody;
-//        } else {
-//            System.out.println("Error en la petición de token de Spotify");
-//            return null;
-//        }
     }
 
     @Override

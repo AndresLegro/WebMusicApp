@@ -15,6 +15,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 @Service
@@ -32,13 +34,17 @@ public class SpotifySearchServiceImpl implements ISpotifyServiceSearch {
 
     @Override
     public Map<String, Object> searchSong(String query) {
+
+        String encodedQuery = URLEncoder.encode(query, StandardCharsets.UTF_8);
+
         // Configurar los parámetros de búsqueda
         MultiValueMap<String, String> queryParams = new LinkedMultiValueMap<>();
-        queryParams.add("q", query);
+        queryParams.add("q", encodedQuery);
         queryParams.add("type", "track");
         queryParams.add("market", "ES");
-        queryParams.add("limit", "10");
-        queryParams.add("offset", "5");
+        queryParams.add("limit", "1");
+        queryParams.add("offset", "0");
+        queryParams.add("include_external", "audio");
 
         // Construir la URL con los parámetros usando UriComponentsBuilder
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(endpoints.getSEARCH())
@@ -64,10 +70,6 @@ public class SpotifySearchServiceImpl implements ISpotifyServiceSearch {
                 new ParameterizedTypeReference<Map<String, Object>>() {}
         );
 
-        // Imprimir la respuesta cruda o procesarla según tus necesidades
-        System.out.println("Respuesta cruda de Spotify: " + responseEntity.getBody());
-
-        // Puedes devolver la respuesta directamente o procesarla según tus necesidades
         return responseEntity.getBody();
     }
 }

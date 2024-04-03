@@ -31,7 +31,7 @@ public class AuthController {
         String tokenResponse = serviceAuth.getTokenResponse(code);
 
         if (tokenResponse != null) {
-            return new ResponseEntity<>("Token de acceso obtenido: " + tokenResponse, HttpStatus.OK);
+            return new ResponseEntity<>("Token de acceso obtenido ", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Error al obtener el token de acceso", HttpStatus.INTERNAL_SERVER_ERROR);
         }
