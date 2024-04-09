@@ -1,4 +1,4 @@
-package com.playlist.playlist.demo.model;
+package com.playlist.playlist.demo.configuration;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;

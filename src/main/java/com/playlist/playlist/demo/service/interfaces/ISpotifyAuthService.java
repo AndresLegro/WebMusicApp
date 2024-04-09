@@ -1,6 +1,4 @@
-package com.playlist.playlist.demo.service;
-
-import com.playlist.playlist.demo.model.AccessTokenResponse;
+package com.playlist.playlist.demo.service.interfaces;
 
 public interface ISpotifyAuthService {
 

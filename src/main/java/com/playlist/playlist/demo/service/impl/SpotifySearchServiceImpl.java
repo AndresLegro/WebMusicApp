@@ -1,8 +1,8 @@
 package com.playlist.playlist.demo.service.impl;
 
 import com.playlist.playlist.demo.commons.Endpoints;
-import com.playlist.playlist.demo.model.AccessTokenResponse;
-import com.playlist.playlist.demo.service.ISpotifyServiceSearch;
+import com.playlist.playlist.demo.configuration.AccessTokenResponse;
+import com.playlist.playlist.demo.service.interfaces.ISpotifyServiceSearch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
@@ -42,7 +42,7 @@ public class SpotifySearchServiceImpl implements ISpotifyServiceSearch {
         queryParams.add("q", encodedQuery);
         queryParams.add("type", "track");
         queryParams.add("market", "ES");
-        queryParams.add("limit", "1");
+        queryParams.add("limit", "10");
         queryParams.add("offset", "0");
         queryParams.add("include_external", "audio");
 
@@ -59,8 +59,6 @@ public class SpotifySearchServiceImpl implements ISpotifyServiceSearch {
 
         // Construir la URL final
         String urlWithParams = builder.toUriString();
-
-        System.out.println("endpoint construido = " + urlWithParams);
 
         // Hacer la solicitud a Spotify API
         ResponseEntity<Map<String, Object>> responseEntity = restTemplate.exchange(

@@ -1,39 +1,38 @@
 package com.playlist.playlist.demo.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.sql.Time;
+import lombok.*;
+import java.util.List;
 
 @Entity
 @Table (name = "song")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class SongEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idSong")
-    private Integer idSong;
+    @Column(name = "id_song")
+    private String idSong;
 
-    @Column(name = "name", nullable = false ,length = 64)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "author", nullable = false ,length = 64)
+    @Column(name = "author", nullable = false)
     private String author;
 
-    @Column(name = "album",length = 45)
+    @Column(name = "album")
     private String album;
 
-    @Column(name = "url", nullable = false ,length = 512)
-    private String url;
-
     @Column(name = "duration")
-    private Time duration;
+    private String duration;
 
     @Column(name = "image", length = 512)
     private String image;
 
+    @OneToMany(mappedBy = "song")
+    private List<PlaylistSongEntity> playlistSongs;
 
 }

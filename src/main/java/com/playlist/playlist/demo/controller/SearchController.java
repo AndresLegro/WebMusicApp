@@ -4,6 +4,7 @@ import com.playlist.playlist.demo.service.impl.SpotifySearchServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +19,8 @@ public class SearchController {
         this.searchService = searchService;
     }
 
-    @GetMapping()
-    public ResponseEntity<Map<String, Object>> search (String query){
-        query = "Do I wanna Know";
-        return new ResponseEntity<>(searchService.searchSong(query), HttpStatus.OK);
+    @GetMapping("/{songToSearch}")
+    public ResponseEntity<Map<String, Object>> search ( @PathVariable String songToSearch){
+        return new ResponseEntity<>(searchService.searchSong(songToSearch), HttpStatus.OK);
     }
 }

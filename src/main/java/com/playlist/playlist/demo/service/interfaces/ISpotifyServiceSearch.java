@@ -1,4 +1,4 @@
-package com.playlist.playlist.demo.service;
+package com.playlist.playlist.demo.service.interfaces;
 
 import java.util.Map;
 

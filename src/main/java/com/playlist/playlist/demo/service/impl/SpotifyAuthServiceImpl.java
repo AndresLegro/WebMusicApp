@@ -7,8 +7,8 @@ import org.springframework.util.*;
 import org.springframework.web.client.RestTemplate;
 
 import org.springframework.beans.factory.annotation.Value;
-import com.playlist.playlist.demo.model.AccessTokenResponse;
-import com.playlist.playlist.demo.service.ISpotifyAuthService;
+import com.playlist.playlist.demo.configuration.AccessTokenResponse;
+import com.playlist.playlist.demo.service.interfaces.ISpotifyAuthService;
 
 
 @Service
@@ -71,7 +71,6 @@ public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
             return null;
         } else {
             String pruebaBody = String.valueOf(responseEntity.getBody());
-            System.out.println("Respuesta cruda de Spotify: " + pruebaBody);
             AccessTokenResponse responseBody = responseEntity.getBody();
             saveAccessToken(responseBody.getAccessToken());
             return responseBody.getAccessToken();
