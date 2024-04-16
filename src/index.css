@@ -1,13 +1,284 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&family=Raleway:wght@400;600&display=swap");
+
+html{
+  background-color: black;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.main-container {
+    display: flex;
+    background-color: black;
+   
+  }
+
+.sidebar{
+  flex: 0 0 5%;
+  position: fixed;
+  background-color: rgb(0, 0, 0);
+  min-height: 48.6rem;
+  min-width: 65px;
+  margin: 1rem;
+  display: flex; 
+  flex-direction: column; 
+  gap: 4rem; 
+  border-right: 1px solid rgb(115, 115, 115); 
 }
+
+.sidebar button {
+  margin-bottom: 1rem;
+  width: 70%; 
+  
+}
+
+.child-container  {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5rem;
+  margin-left: 5rem;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  min-width: 90%;
+  min-height: 100%;
+}
+
+/* Playlist views -----------------------------------------------------------------------------------------------------------------*/ 
+
+.playlist-general-view{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-basis: 200;
+  margin-left: 5vw;
+  margin-top: 5vh;
+}
+
+.conten-playlist-view{
+    display: flex;
+    position: sticky;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin-right: 2vw;
+}
+
+.content-single-playlist-view{
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 20%;
+  top: 30%; /* Fija el elemento en la parte superior de la ventana */
+  left: 17%; /* Fija el elemento en el borde izquierdo de la ventana */
+}
+
+.playlist-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 50vw;
+  font-family: "Roboto", sans-serif !important;
+  font-size: medium;
+}
+
+.songs-playlist-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 40%;
+  min-width: 50vw;
+  font-family: "Roboto", sans-serif !important;
+  font-size: medium;
+}
+
+.buttons-playlist-service{
+  background-color: black;
+  color: white;
+  border: none; 
+  outline: none; 
+  font-family: "Roboto", sans-serif !important;
+  font-size: medium;
+}
+
+.add-button-playlist{
+  display: flex;
+  align-items: flex-start;
+  font-family: "Roboto", sans-serif !important;
+  font-size: medium;
+  border: none !important; 
+  color: white !important;
+  
+  margin-left: 5.5rem;
+  background: -webkit-linear-gradient(90deg, #0ee14e,#282828);
+  background: linear-gradient(90deg, #0ee14e,#282828);
+}
+
+.edit-button-playlist{
+    display: flex;
+    align-items: flex-start;
+    font-family: "Roboto", sans-serif !important;
+    font-size: medium;
+    border: none !important;
+    color: white !important;
+  
+    margin-left: 5.5rem;
+  
+    background: -webkit-linear-gradient(90deg, #000000, #7503a6, #000000);
+    background: linear-gradient(90deg, #282828, #7503a6, #282828);
+  }
+
+  .delete-button-playlist{
+    display: flex;
+    align-items: flex-end;
+    font-family: "Roboto", sans-serif !important;
+    font-size: medium;
+    border: none !important;
+    color: white !important;
+  
+    margin-left: 1vw;
+  
+    background: -webkit-linear-gradient(90deg, #2a2828,#c1121c,#2a2828);
+    background: linear-gradient(90deg, #2a2828,#c1121c,#2a2828);
+  }
+
+  .blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px); /* Agrega un efecto de desenfoque */
+    z-index: 1; /* Asegura que esté por encima del contenido */
+  }
+  
+  .center-table-form {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    margin: 16px;
+    margin-top: 5rem;
+  }
+
+/* .buttons-song-service{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0.5rem;
+} */
+
+/* Searching Bar -----------------------------------------------------------------------------------------------------------------*/
+
+.searching-bar{
+  border-radius: 10px !important;
+
+  text-align: center !important; 
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 100 !important;
+
+  min-width: 92% !important;
+  min-height: 3rem !important;
+  margin-bottom: 2rem;
+  margin-right: 1rem ;
+
+  background-color: #363636;
+  color: rgb(177, 177, 177);
+}
+
+.search-result{
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.fit-objects {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+
+/* 
+Styles for the titles  -----------------------------------------------------------------------------------------------------------------*/
+
+  .h2{
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    min-width: 150px;
+    margin: 1.5rem !important;
+    margin-top: 3rem !important;
+    color: white !important;
+  }
+
+  .h3{
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    min-width: 150px;
+    margin: 1.5rem !important;
+    margin-top: 3rem !important;
+    color: rgb(0, 0, 0) !important;
+  }
+
+ /* Styles for the Tables and Rows ----------------------------------------------------------------------------------------------------------------- */
+
+.thLeft {
+  background-color: #012d60  !important;
+  color: white !important;
+  border-top-left-radius: 10px !important;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+.thRight {
+  background-color: #012d60  !important;
+  color: white !important;
+  border-top-right-radius: 10px !important;
+  font-family: "Roboto", sans-serif;
+}
+
+.thTable {
+  background: -webkit-linear-gradient(90deg, #2a34b0,#1687cb);
+  background: linear-gradient(90deg, #2a34b0,#1687cb);
+  border-radius: 10px;
+  color: white !important;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); 
+  text-align: center !important;
+  justify-content: center !important;
+}
+
+.tdInfoRow{
+  font-family: "Roboto", sans-serif;
+  font-size: 15px !important;
+  min-width: 700px;
+  color: rgb(255, 255, 255) !important;
+  background-color: rgb(18, 18, 18) !important;
+  margin-bottom: 1rem !important;
+}
+
+.tdTableRow {
+  text-align: center !important;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px !important;
+  min-width: 120px;
+  color: rgb(255, 255, 255) !important;
+  background-color: rgb(18, 18, 18) !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Margins ----------------------------------------------------------------------------------------------------------------- */
+
+.margin-1rem{
+  margin-right: 1rem;
+}
+
+/* Images */
+
+.playlist-song-image{
+  width: 20rem;
+  height: 20rem;
+  margin-bottom: 1rem;
+}
+
+

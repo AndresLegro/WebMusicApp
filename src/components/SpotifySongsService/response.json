@@ -1,0 +1,822 @@
+{
+    "tracks": {
+        "href": "https://api.spotify.com/v1/search?query=R+U+mine&type=track&include_external=audio&market=ES&offset=0&limit=10",
+        "items": [
+            {
+                "album": {
+                    "album_type": "album",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                            "id": "7Ln80lUS6He07XvHI8qqHH",
+                            "name": "Arctic Monkeys",
+                            "type": "artist",
+                            "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/78bpIziExqiI9qztvNFlQu"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/78bpIziExqiI9qztvNFlQu",
+                    "id": "78bpIziExqiI9qztvNFlQu",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b2734ae1c4c5c45aabe565499163",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e024ae1c4c5c45aabe565499163",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d000048514ae1c4c5c45aabe565499163",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "AM",
+                    "release_date": "2013-09-09",
+                    "release_date_precision": "day",
+                    "total_tracks": 12,
+                    "type": "album",
+                    "uri": "spotify:album:78bpIziExqiI9qztvNFlQu"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                        "id": "7Ln80lUS6He07XvHI8qqHH",
+                        "name": "Arctic Monkeys",
+                        "type": "artist",
+                        "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 201726,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "GBCEL1300363"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/2AT8iROs4FQueDv2c8q2KE"
+                },
+                "href": "https://api.spotify.com/v1/tracks/2AT8iROs4FQueDv2c8q2KE",
+                "id": "2AT8iROs4FQueDv2c8q2KE",
+                "is_local": false,
+                "is_playable": true,
+                "name": "R U Mine?",
+                "popularity": 82,
+                "preview_url": "https://p.scdn.co/mp3-preview/d41c9b18f0787cc9b2ccea10740d92dd7e7f639a?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 2,
+                "type": "track",
+                "uri": "spotify:track:2AT8iROs4FQueDv2c8q2KE"
+            },
+            {
+                "album": {
+                    "album_type": "album",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                            "id": "7Ln80lUS6He07XvHI8qqHH",
+                            "name": "Arctic Monkeys",
+                            "type": "artist",
+                            "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/78bpIziExqiI9qztvNFlQu"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/78bpIziExqiI9qztvNFlQu",
+                    "id": "78bpIziExqiI9qztvNFlQu",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b2734ae1c4c5c45aabe565499163",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e024ae1c4c5c45aabe565499163",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d000048514ae1c4c5c45aabe565499163",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "AM",
+                    "release_date": "2013-09-09",
+                    "release_date_precision": "day",
+                    "total_tracks": 12,
+                    "type": "album",
+                    "uri": "spotify:album:78bpIziExqiI9qztvNFlQu"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                        "id": "7Ln80lUS6He07XvHI8qqHH",
+                        "name": "Arctic Monkeys",
+                        "type": "artist",
+                        "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 272394,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "GBCEL1300362"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/5FVd6KXrgO9B3JPmC8OPst"
+                },
+                "href": "https://api.spotify.com/v1/tracks/5FVd6KXrgO9B3JPmC8OPst",
+                "id": "5FVd6KXrgO9B3JPmC8OPst",
+                "is_local": false,
+                "is_playable": true,
+                "name": "Do I Wanna Know?",
+                "popularity": 87,
+                "preview_url": "https://p.scdn.co/mp3-preview/006bc465fe3d1c04dae93a050eca9d402a7322b8?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 1,
+                "type": "track",
+                "uri": "spotify:track:5FVd6KXrgO9B3JPmC8OPst"
+            },
+            {
+                "album": {
+                    "album_type": "album",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                            "id": "7Ln80lUS6He07XvHI8qqHH",
+                            "name": "Arctic Monkeys",
+                            "type": "artist",
+                            "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/78bpIziExqiI9qztvNFlQu"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/78bpIziExqiI9qztvNFlQu",
+                    "id": "78bpIziExqiI9qztvNFlQu",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b2734ae1c4c5c45aabe565499163",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e024ae1c4c5c45aabe565499163",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d000048514ae1c4c5c45aabe565499163",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "AM",
+                    "release_date": "2013-09-09",
+                    "release_date_precision": "day",
+                    "total_tracks": 12,
+                    "type": "album",
+                    "uri": "spotify:album:78bpIziExqiI9qztvNFlQu"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                        "id": "7Ln80lUS6He07XvHI8qqHH",
+                        "name": "Arctic Monkeys",
+                        "type": "artist",
+                        "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 161123,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "GBCEL1300370"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/086myS9r57YsLbJpU0TgK9"
+                },
+                "href": "https://api.spotify.com/v1/tracks/086myS9r57YsLbJpU0TgK9",
+                "id": "086myS9r57YsLbJpU0TgK9",
+                "is_local": false,
+                "is_playable": true,
+                "name": "Why'd You Only Call Me When You're High?",
+                "popularity": 87,
+                "preview_url": "https://p.scdn.co/mp3-preview/be5453a4763510679fab61e39662ab0257458be6?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 9,
+                "type": "track",
+                "uri": "spotify:track:086myS9r57YsLbJpU0TgK9"
+            },
+            {
+                "album": {
+                    "album_type": "album",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                            "id": "7Ln80lUS6He07XvHI8qqHH",
+                            "name": "Arctic Monkeys",
+                            "type": "artist",
+                            "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/1XkGORuUX2QGOEIL4EbJKm"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/1XkGORuUX2QGOEIL4EbJKm",
+                    "id": "1XkGORuUX2QGOEIL4EbJKm",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b273b1f8da74f225fa1225cdface",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e02b1f8da74f225fa1225cdface",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d00004851b1f8da74f225fa1225cdface",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "Favourite Worst Nightmare",
+                    "release_date": "2007-04-22",
+                    "release_date_precision": "day",
+                    "total_tracks": 12,
+                    "type": "album",
+                    "uri": "spotify:album:1XkGORuUX2QGOEIL4EbJKm"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                        "id": "7Ln80lUS6He07XvHI8qqHH",
+                        "name": "Arctic Monkeys",
+                        "type": "artist",
+                        "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 253586,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "GBCEL0700074"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/0BxE4FqsDD1Ot4YuBXwAPp"
+                },
+                "href": "https://api.spotify.com/v1/tracks/0BxE4FqsDD1Ot4YuBXwAPp",
+                "id": "0BxE4FqsDD1Ot4YuBXwAPp",
+                "is_local": false,
+                "is_playable": true,
+                "name": "505",
+                "popularity": 85,
+                "preview_url": "https://p.scdn.co/mp3-preview/24ad19af2d5feeeb0048bff59b4096960b415848?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 12,
+                "type": "track",
+                "uri": "spotify:track:0BxE4FqsDD1Ot4YuBXwAPp"
+            },
+            {
+                "album": {
+                    "album_type": "album",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                            "id": "7Ln80lUS6He07XvHI8qqHH",
+                            "name": "Arctic Monkeys",
+                            "type": "artist",
+                            "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/7Heaa0B4KOxdWhSICTR2wE"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/7Heaa0B4KOxdWhSICTR2wE",
+                    "id": "7Heaa0B4KOxdWhSICTR2wE",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b273753ff61c73b2861911ce590d",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e02753ff61c73b2861911ce590d",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d00004851753ff61c73b2861911ce590d",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "Live at the Royal Albert Hall",
+                    "release_date": "2020-12-04",
+                    "release_date_precision": "day",
+                    "total_tracks": 20,
+                    "type": "album",
+                    "uri": "spotify:album:7Heaa0B4KOxdWhSICTR2wE"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
+                        "id": "7Ln80lUS6He07XvHI8qqHH",
+                        "name": "Arctic Monkeys",
+                        "type": "artist",
+                        "uri": "spotify:artist:7Ln80lUS6He07XvHI8qqHH"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 371853,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "GBCEL2000440"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/30a6L5cAZgVbqA3QfO0RS5"
+                },
+                "href": "https://api.spotify.com/v1/tracks/30a6L5cAZgVbqA3QfO0RS5",
+                "id": "30a6L5cAZgVbqA3QfO0RS5",
+                "is_local": false,
+                "is_playable": true,
+                "name": "R U Mine? - Live",
+                "popularity": 40,
+                "preview_url": "https://p.scdn.co/mp3-preview/e6d9b48cfc4ec87b3b587e0207157fded749890e?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 20,
+                "type": "track",
+                "uri": "spotify:track:30a6L5cAZgVbqA3QfO0RS5"
+            },
+            {
+                "album": {
+                    "album_type": "single",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4qIVPF0s71ZYW3qzhu5GkF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4qIVPF0s71ZYW3qzhu5GkF",
+                            "id": "4qIVPF0s71ZYW3qzhu5GkF",
+                            "name": "Kina",
+                            "type": "artist",
+                            "uri": "spotify:artist:4qIVPF0s71ZYW3qzhu5GkF"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/62ZDHZEvz1WOCe9PTzFPek"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/62ZDHZEvz1WOCe9PTzFPek",
+                    "id": "62ZDHZEvz1WOCe9PTzFPek",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b273480d506e2beb27060dcc17b2",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e02480d506e2beb27060dcc17b2",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d00004851480d506e2beb27060dcc17b2",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "U’re Mine",
+                    "release_date": "2018-03-03",
+                    "release_date_precision": "day",
+                    "total_tracks": 1,
+                    "type": "album",
+                    "uri": "spotify:album:62ZDHZEvz1WOCe9PTzFPek"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/4qIVPF0s71ZYW3qzhu5GkF"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/4qIVPF0s71ZYW3qzhu5GkF",
+                        "id": "4qIVPF0s71ZYW3qzhu5GkF",
+                        "name": "Kina",
+                        "type": "artist",
+                        "uri": "spotify:artist:4qIVPF0s71ZYW3qzhu5GkF"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 138026,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "QZBRF1826982"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/7cPQWcczApOEcmeFwUG9xj"
+                },
+                "href": "https://api.spotify.com/v1/tracks/7cPQWcczApOEcmeFwUG9xj",
+                "id": "7cPQWcczApOEcmeFwUG9xj",
+                "is_local": false,
+                "is_playable": true,
+                "name": "U’re Mine",
+                "popularity": 60,
+                "preview_url": "https://p.scdn.co/mp3-preview/a56e88cd00437ee3bf2260fba952b6baa3b7041a?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 1,
+                "type": "track",
+                "uri": "spotify:track:7cPQWcczApOEcmeFwUG9xj"
+            },
+            {
+                "album": {
+                    "album_type": "single",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6jsjhAEteAlY0vCiLvMLBA"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6jsjhAEteAlY0vCiLvMLBA",
+                            "id": "6jsjhAEteAlY0vCiLvMLBA",
+                            "name": "ROZES",
+                            "type": "artist",
+                            "uri": "spotify:artist:6jsjhAEteAlY0vCiLvMLBA"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6kyUfziWP8ydAsKzyXsC83"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6kyUfziWP8ydAsKzyXsC83",
+                            "id": "6kyUfziWP8ydAsKzyXsC83",
+                            "name": "StayLoose",
+                            "type": "artist",
+                            "uri": "spotify:artist:6kyUfziWP8ydAsKzyXsC83"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/6yKCdRIwrSykq1xY8nxn7S"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/6yKCdRIwrSykq1xY8nxn7S",
+                    "id": "6yKCdRIwrSykq1xY8nxn7S",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b273447c6beeed0947e3cc77207f",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e02447c6beeed0947e3cc77207f",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d00004851447c6beeed0947e3cc77207f",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "R U Mine (SteLouse Remix)",
+                    "release_date": "2015-08-24",
+                    "release_date_precision": "day",
+                    "total_tracks": 1,
+                    "type": "album",
+                    "uri": "spotify:album:6yKCdRIwrSykq1xY8nxn7S"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6jsjhAEteAlY0vCiLvMLBA"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6jsjhAEteAlY0vCiLvMLBA",
+                        "id": "6jsjhAEteAlY0vCiLvMLBA",
+                        "name": "ROZES",
+                        "type": "artist",
+                        "uri": "spotify:artist:6jsjhAEteAlY0vCiLvMLBA"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6kyUfziWP8ydAsKzyXsC83"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6kyUfziWP8ydAsKzyXsC83",
+                        "id": "6kyUfziWP8ydAsKzyXsC83",
+                        "name": "StayLoose",
+                        "type": "artist",
+                        "uri": "spotify:artist:6kyUfziWP8ydAsKzyXsC83"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 231759,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "TCACI1504834"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/0G0THcz2N4UpY4A6GhgMsN"
+                },
+                "href": "https://api.spotify.com/v1/tracks/0G0THcz2N4UpY4A6GhgMsN",
+                "id": "0G0THcz2N4UpY4A6GhgMsN",
+                "is_local": false,
+                "is_playable": true,
+                "name": "R U Mine (SteLouse Remix)",
+                "popularity": 27,
+                "preview_url": "https://p.scdn.co/mp3-preview/4fe3e201d32aebb01f99554a01b3380f02ec9360?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 1,
+                "type": "track",
+                "uri": "spotify:track:0G0THcz2N4UpY4A6GhgMsN"
+            },
+            {
+                "album": {
+                    "album_type": "single",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/74Zk4BaTpscIf6k04UoCds"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/74Zk4BaTpscIf6k04UoCds",
+                            "id": "74Zk4BaTpscIf6k04UoCds",
+                            "name": "JAIE",
+                            "type": "artist",
+                            "uri": "spotify:artist:74Zk4BaTpscIf6k04UoCds"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/5g8A7xkBtel2aTFgcjNYXN"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/5g8A7xkBtel2aTFgcjNYXN",
+                    "id": "5g8A7xkBtel2aTFgcjNYXN",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b2734742a323c5ba8b3d6367555f",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e024742a323c5ba8b3d6367555f",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d000048514742a323c5ba8b3d6367555f",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "r u mine",
+                    "release_date": "2023-07-21",
+                    "release_date_precision": "day",
+                    "total_tracks": 1,
+                    "type": "album",
+                    "uri": "spotify:album:5g8A7xkBtel2aTFgcjNYXN"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/74Zk4BaTpscIf6k04UoCds"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/74Zk4BaTpscIf6k04UoCds",
+                        "id": "74Zk4BaTpscIf6k04UoCds",
+                        "name": "JAIE",
+                        "type": "artist",
+                        "uri": "spotify:artist:74Zk4BaTpscIf6k04UoCds"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 128888,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "QZNJX2381167"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/0LiLk6aYQZOy1uA63pMqQo"
+                },
+                "href": "https://api.spotify.com/v1/tracks/0LiLk6aYQZOy1uA63pMqQo",
+                "id": "0LiLk6aYQZOy1uA63pMqQo",
+                "is_local": false,
+                "is_playable": true,
+                "name": "r u mine",
+                "popularity": 40,
+                "preview_url": "https://p.scdn.co/mp3-preview/e96e1418f5cd92b56666c83a05b6d9d92ee8f851?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 1,
+                "type": "track",
+                "uri": "spotify:track:0LiLk6aYQZOy1uA63pMqQo"
+            },
+            {
+                "album": {
+                    "album_type": "single",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6O2VM2aM7KwyDIJ4VvAbYx"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6O2VM2aM7KwyDIJ4VvAbYx",
+                            "id": "6O2VM2aM7KwyDIJ4VvAbYx",
+                            "name": "Dagames",
+                            "type": "artist",
+                            "uri": "spotify:artist:6O2VM2aM7KwyDIJ4VvAbYx"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/4Qu9kYMmcXNNRipi1E9QC6"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/4Qu9kYMmcXNNRipi1E9QC6",
+                    "id": "4Qu9kYMmcXNNRipi1E9QC6",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b273660802f3e95a27c884c7c548",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e02660802f3e95a27c884c7c548",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d00004851660802f3e95a27c884c7c548",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "You're Mine",
+                    "release_date": "2019-03-31",
+                    "release_date_precision": "day",
+                    "total_tracks": 1,
+                    "type": "album",
+                    "uri": "spotify:album:4Qu9kYMmcXNNRipi1E9QC6"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6O2VM2aM7KwyDIJ4VvAbYx"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6O2VM2aM7KwyDIJ4VvAbYx",
+                        "id": "6O2VM2aM7KwyDIJ4VvAbYx",
+                        "name": "Dagames",
+                        "type": "artist",
+                        "uri": "spotify:artist:6O2VM2aM7KwyDIJ4VvAbYx"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 170692,
+                "explicit": true,
+                "external_ids": {
+                    "isrc": "QZDA41922987"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/23F2WO6H1ERmRp8aCEQE9y"
+                },
+                "href": "https://api.spotify.com/v1/tracks/23F2WO6H1ERmRp8aCEQE9y",
+                "id": "23F2WO6H1ERmRp8aCEQE9y",
+                "is_local": false,
+                "is_playable": true,
+                "name": "You're Mine",
+                "popularity": 61,
+                "preview_url": "https://p.scdn.co/mp3-preview/99dc69c97b6d10d29d709536aa52404150115077?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 1,
+                "type": "track",
+                "uri": "spotify:track:23F2WO6H1ERmRp8aCEQE9y"
+            },
+            {
+                "album": {
+                    "album_type": "single",
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6n5fNRTIuVhgX6h0mA60YY"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6n5fNRTIuVhgX6h0mA60YY",
+                            "id": "6n5fNRTIuVhgX6h0mA60YY",
+                            "name": "bbaQ",
+                            "type": "artist",
+                            "uri": "spotify:artist:6n5fNRTIuVhgX6h0mA60YY"
+                        }
+                    ],
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/album/61XkU29Se9VQONb24BFngZ"
+                    },
+                    "href": "https://api.spotify.com/v1/albums/61XkU29Se9VQONb24BFngZ",
+                    "id": "61XkU29Se9VQONb24BFngZ",
+                    "images": [
+                        {
+                            "height": 640,
+                            "url": "https://i.scdn.co/image/ab67616d0000b2733c54e43f6bdb45202c761e3a",
+                            "width": 640
+                        },
+                        {
+                            "height": 300,
+                            "url": "https://i.scdn.co/image/ab67616d00001e023c54e43f6bdb45202c761e3a",
+                            "width": 300
+                        },
+                        {
+                            "height": 64,
+                            "url": "https://i.scdn.co/image/ab67616d000048513c54e43f6bdb45202c761e3a",
+                            "width": 64
+                        }
+                    ],
+                    "is_playable": true,
+                    "name": "GORAP LOSERS",
+                    "release_date": "2021-04-27",
+                    "release_date_precision": "day",
+                    "total_tracks": 8,
+                    "type": "album",
+                    "uri": "spotify:album:61XkU29Se9VQONb24BFngZ"
+                },
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/4CF0QZtzsHDYdTHqipMGdh"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/4CF0QZtzsHDYdTHqipMGdh",
+                        "id": "4CF0QZtzsHDYdTHqipMGdh",
+                        "name": "JAEHA",
+                        "type": "artist",
+                        "uri": "spotify:artist:4CF0QZtzsHDYdTHqipMGdh"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/0E0fq98DMHhkAgiXWpCViX"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/0E0fq98DMHhkAgiXWpCViX",
+                        "id": "0E0fq98DMHhkAgiXWpCViX",
+                        "name": "Skinny Brown",
+                        "type": "artist",
+                        "uri": "spotify:artist:0E0fq98DMHhkAgiXWpCViX"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/1IoxcWz8vPDGOJBQNCGEvF"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/1IoxcWz8vPDGOJBQNCGEvF",
+                        "id": "1IoxcWz8vPDGOJBQNCGEvF",
+                        "name": "Futuristic Swaver",
+                        "type": "artist",
+                        "uri": "spotify:artist:1IoxcWz8vPDGOJBQNCGEvF"
+                    }
+                ],
+                "disc_number": 1,
+                "duration_ms": 147188,
+                "explicit": false,
+                "external_ids": {
+                    "isrc": "KRMIM2118647"
+                },
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/track/65HJDNcoS1L0emJljmqMPI"
+                },
+                "href": "https://api.spotify.com/v1/tracks/65HJDNcoS1L0emJljmqMPI",
+                "id": "65HJDNcoS1L0emJljmqMPI",
+                "is_local": false,
+                "is_playable": true,
+                "name": "I'M FINE Remix (Feat. Skinny Brown, Futuristic Swaver)",
+                "popularity": 9,
+                "preview_url": "https://p.scdn.co/mp3-preview/4c689a2e366c449ee33b6900fbf0b890b119ca0c?cid=34d17fc0605f4801b37e996797773764",
+                "track_number": 8,
+                "type": "track",
+                "uri": "spotify:track:65HJDNcoS1L0emJljmqMPI"
+            }
+        ],
+        "limit": 10,
+        "next": "https://api.spotify.com/v1/search?query=R+U+mine&type=track&include_external=audio&market=ES&offset=10&limit=10",
+        "offset": 0,
+        "previous": null,
+        "total": 816
+    }
+}
