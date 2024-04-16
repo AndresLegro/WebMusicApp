@@ -1,5 +1,7 @@
 package com.playlist.playlist.demo.configuration;
 
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -9,9 +11,21 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
-
+@Data
 @Configuration
 public class SpotifyConfig {
+
+    @Value("${spotify.api.client-id}")
+    private String clientId;
+
+    @Value("${spotify.api.client-secret}")
+    private String clientSecret;
+
+    @Value("${spotify.api.redirect-uri}")
+    private String redirectUri;
+
+    @Value("${spotify.api.base-url}")
+    private String apiUrl;
 
    @Bean
    public RestTemplate restTemplate() {

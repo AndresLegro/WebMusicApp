@@ -12,6 +12,7 @@ public class PlaylistEntityToDto implements Converter<PlaylistEntity, PlaylistDt
     public PlaylistDto convert(PlaylistEntity playlist) {
 
         return PlaylistDto.builder()
+                .id(playlist.getId())
                 .name(playlist.getName())
                 .author(playlist.getAuthor())
                 .description(playlist.getDescription())

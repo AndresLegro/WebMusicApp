@@ -3,37 +3,35 @@ package com.playlist.playlist.demo.service.impl;
 import com.playlist.playlist.demo.commons.Endpoints;
 import com.playlist.playlist.demo.configuration.AccessTokenResponse;
 import com.playlist.playlist.demo.service.interfaces.ISpotifyServiceSearch;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 
 @Service
+@AllArgsConstructor
 public class SpotifySearchServiceImpl implements ISpotifyServiceSearch {
 
-    @Autowired
     Endpoints endpoints;
 
-    @Autowired
     AccessTokenResponse accessTokenResponse;
 
-    @Autowired
     private RestTemplate restTemplate;
 
 
     @Override
-    public Map<String, Object> searchSong(String query) {
+    public List<Map<String, Object>> searchSong(String query) {
 
         String encodedQuery = URLEncoder.encode(query, StandardCharsets.UTF_8);
 
@@ -68,6 +66,23 @@ public class SpotifySearchServiceImpl implements ISpotifyServiceSearch {
                 new ParameterizedTypeReference<Map<String, Object>>() {}
         );
 
-        return responseEntity.getBody();
+        try{
+            Map<String, Object> entityBody = responseEntity.getBody();
+
+            if (entityBody.containsKey("tracks")) {
+                Map<String, Object> tracksMap = (Map<String, Object>) entityBody.get("tracks");
+
+                if (tracksMap != null) {
+                    return (List<Map<String, Object>>) tracksMap.get("items");
+                }
+            }
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT,"No se pudo obtener la respuesta : " + e.getMessage());
+        }
+
+
+        return null;
     }
+
+
 }

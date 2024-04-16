@@ -10,6 +10,7 @@ import java.util.List;
 @Data
 public class PlaylistDto {
 
+    private int id;
     private String name;
     private String author;
     private String description;

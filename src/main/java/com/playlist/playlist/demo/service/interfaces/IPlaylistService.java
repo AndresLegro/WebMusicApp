@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface IPlaylistService {
 
     Optional<PlaylistDto> getPlaylist(int idPlaylist);
+    Optional<List<PlaylistDto>> getAllPlaylist();
     List<SongEntity> createPlaylist(PlaylistEntity playlist);
     PlaylistDto updatePlayList(PlaylistEntity playlistChanged, int idPlaylist);
     void deletePlaylist(int idPlaylist);

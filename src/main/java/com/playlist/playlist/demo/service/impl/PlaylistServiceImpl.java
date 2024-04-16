@@ -60,6 +60,18 @@ public class PlaylistServiceImpl implements IPlaylistService {
     }
 
     @Override
+    public Optional<List<PlaylistDto>> getAllPlaylist() {
+
+        Optional<List<PlaylistDto>> mapAllPlaylist = Optional.of(playlistRepository.findAllByAndIsDeletedFalse().stream().map(
+                playlistEntities -> playlistEntityToDto.convert(playlistEntities)
+        ).collect(Collectors.toList()));
+
+        return Optional.ofNullable((mapAllPlaylist).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No tienes ninguna playlist creada aun!")
+        ));
+    }
+
+    @Override
     public List<SongEntity> createPlaylist(PlaylistEntity playlistToCreate) {
 
         List<PlaylistEntity> playlistDataBase = playlistRepository.findAll();
@@ -135,6 +147,12 @@ public class PlaylistServiceImpl implements IPlaylistService {
 
             Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIsDeletedFalse(idPlaylist);
             Optional<SongEntity> songToFind = songRepository.findById(idSong);
+
+            if(songToFind.isEmpty()){
+                SongEntity songToSaveAndAddToPlaylist = songsService.saveSong(idSong);
+                songRepository.save(songToSaveAndAddToPlaylist);
+                songToFind = Optional.of(songToSaveAndAddToPlaylist);
+            }
 
             if(playlistToFind.isPresent() && songToFind.isPresent() ){
 

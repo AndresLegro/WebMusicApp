@@ -1,5 +1,7 @@
 package com.playlist.playlist.demo.service.impl;
 import com.playlist.playlist.demo.commons.Endpoints;
+import com.playlist.playlist.demo.configuration.SpotifyConfig;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -12,36 +14,24 @@ import com.playlist.playlist.demo.service.interfaces.ISpotifyAuthService;
 
 
 @Service
+@AllArgsConstructor
 public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
 
-    @Value("${spotify.api.client-id}")
-    private String clientId;
-
-    @Value("${spotify.api.client-secret}")
-    private String clientSecret;
-
-    @Value("${spotify.api.redirect-uri}")
-    private String redirectUri;
-
-    @Value("${spotify.api.base-url}")
-    private String apiUrl;
-
-    @Autowired
     Endpoints endpoints;
 
-    @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
     AccessTokenResponse accessTokenResponse;
+
+    SpotifyConfig spotifyConfig;
 
 
     @Override
     public String getAthorizationUrl() {
          return "https://accounts.spotify.com/authorize" +
-                "?client_id=" + clientId +
+                "?client_id=" + spotifyConfig.getClientId() +
                 "&response_type=code" +
-                "&redirect_uri=" + redirectUri +
+                "&redirect_uri=" + spotifyConfig.getRedirectUri() +
                 "&scope=user-read-private user-read-email playlist-read-private";
     }
 
@@ -53,9 +43,9 @@ public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
         MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
         requestBody.add("grant_type", "authorization_code");
         requestBody.add("code", code);
-        requestBody.add("redirect_uri", redirectUri);
-        requestBody.add("client_id", clientId);
-        requestBody.add("client_secret", clientSecret);
+        requestBody.add("redirect_uri", spotifyConfig.getRedirectUri());
+        requestBody.add("client_id", spotifyConfig.getClientId());
+        requestBody.add("client_secret", spotifyConfig.getClientSecret());
 
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(requestBody, headers);
 

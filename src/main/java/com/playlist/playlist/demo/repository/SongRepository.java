@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface SongRepository extends JpaRepository<SongEntity, String> {
 
     Optional<SongEntity> findById(String idSong);
+    Optional<SongEntity> findByName(String name);
 }

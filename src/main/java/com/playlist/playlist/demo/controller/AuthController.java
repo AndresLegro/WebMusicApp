@@ -1,11 +1,15 @@
 package com.playlist.playlist.demo.controller;
 
 import com.playlist.playlist.demo.service.impl.SpotifyAuthServiceImpl;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.io.IOException;
 
@@ -20,13 +24,21 @@ public class AuthController {
         this.serviceAuth = serviceAuth;
     }
 
+    @Operation(summary = "Allow to log in the Spotify services",
+            description = "If you don't log in, there are some functions that you can't use")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Log in the Spotify services and get the token access"),
+            @ApiResponse(responseCode = "404", description = "The user doesn't exist in Spotify and can't get the access token")
+    })
     @GetMapping("/login")
+    @CrossOrigin(origins = "http://localhost:3000")
     public void login (HttpServletResponse response) throws IOException {
         String authorizationUrl = serviceAuth.getAthorizationUrl();
         response.sendRedirect(authorizationUrl);
     }
 
     @GetMapping("/redirect")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<String> getTokenResponse (@RequestParam("code") String code){
         String tokenResponse = serviceAuth.getTokenResponse(code);
 
