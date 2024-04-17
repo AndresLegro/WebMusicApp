@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import SearchTableRows from "./SearchTableRows";
 
-const SearchTable = ({responseJson , saveSong, addSongtoPlaylist}) => {
-    console.log(responseJson);
+const SearchTable = ({responseJson , saveSong, addSongtoPlaylist, handleCallGetPlaylists,idPlaylistSelected}) => {
 
     return (
         <div className="">
@@ -28,6 +27,8 @@ const SearchTable = ({responseJson , saveSong, addSongtoPlaylist}) => {
                                     image={song.album.images[0].url}
                                     saveSong={saveSong}
                                     addSongtoPlaylist={addSongtoPlaylist}
+                                    handleCallGetPlaylists={handleCallGetPlaylists}
+                                    idPlaylistSelected={idPlaylistSelected}
                                 />
                             ))}
                         </tbody>

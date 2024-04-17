@@ -70,7 +70,7 @@ html{
   flex-direction: column;
   max-width: 20%;
   top: 30%; /* Fija el elemento en la parte superior de la ventana */
-  left: 17%; /* Fija el elemento en el borde izquierdo de la ventana */
+  left: 20%; /* Fija el elemento en el borde izquierdo de la ventana */
 }
 
 .playlist-info{

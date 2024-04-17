@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 
-const SearchTableRows = ({ id, name, artist, album, duration, image, saveSong, addSongtoPlaylist }) => {
+const SearchTableRows = ({ id, name, artist, album, duration, image, saveSong, handleCallGetPlaylists }) => {
 
   const minutes = Math.floor(duration / 60000);
   const seconds = ((duration % 60000) / 1000).toFixed(0);
@@ -12,7 +12,7 @@ const SearchTableRows = ({ id, name, artist, album, duration, image, saveSong, a
   };
 
   const handleAddSongtoPlaylistButtonClick = () => {
-    addSongtoPlaylist(id);
+    handleCallGetPlaylists(id)
   };
 
   return (

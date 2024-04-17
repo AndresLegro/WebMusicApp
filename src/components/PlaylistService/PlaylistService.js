@@ -28,11 +28,6 @@ const PlaylistService = () =>{
           [name]: value,
         }));
       };
-    
-    useEffect(() => {
-        getAllPlaylist();
-    }, []);
-
 
     const getAllPlaylist = async () => {
         try {
@@ -47,6 +42,12 @@ const PlaylistService = () =>{
             console.error("Error de red:", error);
         }     
     }
+
+
+    useEffect(() => {
+      getAllPlaylist();
+  }, []);
+
 
     const createPlaylist = async () => {
 
@@ -101,7 +102,7 @@ const PlaylistService = () =>{
     return (
         <div className="">
           {callGetPlaylist ? (
-            <div style={{marginTop:"2rem"}}>
+            <div style={{marginTop:"2rem", marginLeft:"3rem"}}>
             <button className="btn btn-light" type="button" onClick={() => setCallGetPlaylist(false)}><FontAwesomeIcon icon={faArrowLeft} /></button>
             <PlaylistSingleView
               playlistSelected={playlistSelected}

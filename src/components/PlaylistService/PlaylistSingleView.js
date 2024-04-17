@@ -77,7 +77,10 @@ const PlaylistSingleView = ({ playlistSelected }) => {
         
       }).then(async (result) => {
         if (result.isConfirmed) {
-          const response = await fetch(`http://localhost:8080/playlist/delete/${id}`);
+          const response = await fetch(`http://localhost:8080/playlist/delete/${id}`, {
+            method: 'DELETE',
+          });
+
           if (response.ok) {
             console.log("Playlist eliminada con éxito");
           } else {
