@@ -27,6 +27,9 @@ public class SpotifyConfig {
     @Value("${spotify.api.base-url}")
     private String apiUrl;
 
+    @Value("${spring.security.oauth2.client.registration.spotify.scope}")
+    private String scopes;
+
    @Bean
    public RestTemplate restTemplate() {
        RestTemplate restTemplate = new RestTemplate();

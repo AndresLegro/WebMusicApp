@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.io.IOException;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/spotify")
@@ -39,14 +40,20 @@ public class AuthController {
 
     @GetMapping("/redirect")
     @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<String> getTokenResponse (@RequestParam("code") String code){
+    public ResponseEntity<String> getTokenResponse (@RequestParam("code") String code, HttpServletResponse response ){
         String tokenResponse = serviceAuth.getTokenResponse(code);
 
         if (tokenResponse != null) {
-            return new ResponseEntity<>("Token de acceso obtenido ", HttpStatus.OK);
+            return new ResponseEntity<>("Has iniciado sesion correctamente, puedes volver a la pagina de nuevo", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Error al obtener el token de acceso", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping("/getToken")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public Optional<String> getAccessToken(){
+       return serviceAuth.getAccessToken();
     }
 
 }

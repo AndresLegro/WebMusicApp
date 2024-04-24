@@ -13,8 +13,6 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -65,7 +63,6 @@ public class SpotifySongsService implements ISpotifySongService {
             String nameTrack = (String) response.get("name");
             long durationTrack = (int) response.get("duration_ms");
 
-            // Convertir la duración de milisegundos a minutos:segundos
             long minutes = durationTrack / 60000;
             long remainingSeconds = (durationTrack % 60000) / 1000;
             String formattedDuration = String.format("%d:%02d", minutes, remainingSeconds);
@@ -111,6 +108,7 @@ public class SpotifySongsService implements ISpotifySongService {
 
     }
 
+
     @Override
     public List<SongDto> getSong(String songName) {
         SongEntity exampleSong =  new SongEntity();
@@ -129,7 +127,7 @@ public class SpotifySongsService implements ISpotifySongService {
         return songEntities.stream().map(songEntity -> songConverter.convertToDto(songEntity)).collect(Collectors.toList());
     }
 
-}
+    }
 
 
 

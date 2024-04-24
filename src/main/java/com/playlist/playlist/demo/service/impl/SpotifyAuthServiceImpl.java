@@ -11,6 +11,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import com.playlist.playlist.demo.configuration.AccessTokenResponse;
 import com.playlist.playlist.demo.service.interfaces.ISpotifyAuthService;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.Optional;
 
 
 @Service
@@ -32,7 +35,7 @@ public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
                 "?client_id=" + spotifyConfig.getClientId() +
                 "&response_type=code" +
                 "&redirect_uri=" + spotifyConfig.getRedirectUri() +
-                "&scope=user-read-private user-read-email playlist-read-private";
+                "&scope=" + spotifyConfig.getScopes();
     }
 
     @Override
@@ -77,4 +80,13 @@ public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
     public void clearAccessToken() {
         accessTokenResponse.setAccessToken(null);
     }
+
+    public Optional<String> getAccessToken() {
+
+        return Optional.ofNullable(Optional.ofNullable(accessTokenResponse.getAccessToken()).orElseThrow(
+                () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Aun no has iniciado sesion en spotfiy!")
+        ));
+    }
+
+
 }
