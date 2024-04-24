@@ -5,20 +5,23 @@ import SpotifySearchService from "./components/SpotifySearchService/SpotifySearc
 import PlaylistService from "./components/PlaylistService/PlaylistService";
 import Sidebar from "./components/Sidebar/Sidebar";
 import PlaylistSingleView from "./components/PlaylistService/PlaylistSingleView";
-
+import { SearchProvider } from "./components/SpotifySearchService/SearchContext";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    console.log("User logged in!");
-    setLoggedIn(true);
+  const handleLogin = async () => {     
+   
+      setLoggedIn(true);
+      console.log("User logged in!");
+ 
   };
 
   return (
+    <SearchProvider>
     <Router>
       <div className="main-container">
-        <div className="sidebar">
+        <div className="">
           <Sidebar />
         </div>
 
@@ -36,6 +39,7 @@ function App() {
         </div>
       </div>
     </Router>
+    </SearchProvider>
   );
 }
 

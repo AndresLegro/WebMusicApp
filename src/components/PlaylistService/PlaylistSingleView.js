@@ -108,6 +108,8 @@ const PlaylistSingleView = ({ playlistSelected }) => {
 
       <div className={`playlist-general-view ${isEditing ? 'blur-background' : ''}`}>
         <div className="content-single-playlist-view">
+
+          
           <img
             src={image}
             alt={name}

@@ -103,7 +103,7 @@ const PlaylistService = () =>{
         <div className="">
           {callGetPlaylist ? (
             <div style={{marginTop:"2rem", marginLeft:"3rem"}}>
-            <button className="btn btn-light" type="button" onClick={() => setCallGetPlaylist(false)}><FontAwesomeIcon icon={faArrowLeft} /></button>
+            <button className="back-button-playlist btn" type="button" onClick={() => setCallGetPlaylist(false)}><FontAwesomeIcon icon={faArrowLeft} /></button>
             <PlaylistSingleView
               playlistSelected={playlistSelected}
             />
@@ -134,7 +134,6 @@ const PlaylistService = () =>{
                             style={{ width: "150px", height: "150px", marginBlockEnd: "1rem" }}
                           />
                           <div style={{ fontWeight: 'bolder' }}>{playlist.name}</div>
-                          <div>{playlist.author}</div>
                           <div>{playlist.songsAmount} Pistas</div>
                         </div>
                       </button>

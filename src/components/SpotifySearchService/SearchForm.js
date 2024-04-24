@@ -2,10 +2,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons"; 
 import React, { useState } from "react";
+import { useSearch } from './SearchContext';
 
 const SearchForm = ({onSearch}) =>{
 
-    const [searchTerm , setSearchTerm]= useState("");
+    const {searchTerm , setSearchTerm}= useSearch();
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -14,7 +15,7 @@ const SearchForm = ({onSearch}) =>{
     const handleSubmit = (event) => {
         event.preventDefault();
         if (searchTerm.trim() !== "") {
-            onSearch(searchTerm); // Llama a la función onSearch con el término de búsqueda
+            onSearch(searchTerm);
         } else {
             console.error("No hay nada que buscar!, por favor escribe algo");
         }
