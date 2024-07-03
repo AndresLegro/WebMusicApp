@@ -1,0 +1,1 @@
+This is the first BETA of my web page that consumes spotify's API. You can listening music using a premuim Spotify account. In this firts version, the main target is to use it in computers , but I want in futture updates , improve the mobile version, becuase is not completly resposive yet.
