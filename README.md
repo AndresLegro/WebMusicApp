@@ -1,1 +1,2 @@
-This is the first BETA of my web page that consumes spotify's API. You can listening music using a premuim Spotify account. In this firts version, the main target is to use it in computers , but I want in futture updates , improve the mobile version, becuase is not completly resposive yet.
+This is the first BETA of my web page that consumes spotify's API. You can listening music using a premuim Spotify account. In this firts version, the main target is to use it in computers , but I want in future updates , improve the mobile version, because is not completly responsive yet.
+This project is to also show, how capable I am, I know there's somethings to improve, but I'm willing to get better and do my best in any project 
