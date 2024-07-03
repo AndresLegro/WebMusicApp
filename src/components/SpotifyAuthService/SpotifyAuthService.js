@@ -1,5 +1,8 @@
 import React, { useState, useRef } from "react";
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+
 
 const SpotifyAuthService = ({ onLogin }) => {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -54,20 +57,23 @@ const SpotifyAuthService = ({ onLogin }) => {
         }
     };
 
+    
     const handleLogin = () => {
         Swal.fire({
             title: 'Esperando a que inicies sesión en Spotify',
+            html: `<span style="display: flex; align-items: center;"></span> Iniciando sesión...`,
             didOpen: () => {
                 Swal.showLoading();
                 logIn();
             }
         });
     };
+    
 
     return (
-        <div className="child-container">
-            <button type="button" className="btn btn-info" onClick={handleLogin}>
-                Log In to Spotify
+        <div className="login">
+            <button type="button" className="btn btn-success" onClick={handleLogin}>
+                Log In to Spotify <FontAwesomeIcon icon={faSpotify} />
             </button>
         </div>
     );

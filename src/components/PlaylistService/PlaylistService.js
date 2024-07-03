@@ -4,10 +4,11 @@ import { faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import PlaylistSingleView from "./PlaylistSingleView";
 import { Link } from "react-router-dom";
 import CreatePlaylistForm from "./CreatePlaylistForm";
+import MusicPlayer from "../../shared/MusicPlayer/MusicPlayer"; // Importar el componente MusicPlayer
 // import Swal from 'sweetalert2';
 
-const PlaylistService = () =>{
-    
+const PlaylistService = (playSong, pauseSong, resumeSong) =>{
+  
     const [idPlaylistSelected, setIdPlaylistSelected ]= useState(null);
     const [playlists, setPlaylists] = useState([]);
     const [playlistSelected, setPlaylistSelected ]= useState(null);
@@ -106,6 +107,9 @@ const PlaylistService = () =>{
             <button className="back-button-playlist btn" type="button" onClick={() => setCallGetPlaylist(false)}><FontAwesomeIcon icon={faArrowLeft} /></button>
             <PlaylistSingleView
               playlistSelected={playlistSelected}
+              playSong={playSong}
+              pauseSong={pauseSong}
+              resumeSong={resumeSong}
             />
 
             </div>
@@ -152,6 +156,8 @@ const PlaylistService = () =>{
                             </div>
 
                         )}
+
+                       
                     </div>
 
                 ))}

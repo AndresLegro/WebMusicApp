@@ -6,8 +6,9 @@ html{
 }
 
 .custom-log{
-  margin-top: 1rem;
+  margin-top: 2rem;
   border-radius: 35px;
+  margin-left: 0.5rem;
 }
 
 .main-container {
@@ -16,22 +17,27 @@ html{
    
 }
 
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+
 .sidebar{
   flex: 0 0 5%;
   position: fixed;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(25, 25, 25);
   min-height: 48.6rem;
-  min-width: 65px;
-  margin: 1rem;
+  min-width: 77px;
   display: flex; 
   flex-direction: column; 
   gap: 2rem; 
-  border-right: 1px solid rgb(115, 115, 115); 
 }
 
 .sidebar button {
   width: 70%; 
-  
+  margin-left: 0.5rem;
 }
 
 .child-container  {
@@ -45,6 +51,38 @@ html{
   min-width: 90%;
   min-height: 100%;
 }
+
+.playback-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playback-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.playback-buttons button {
+  border-radius: 20px;
+  margin: 0.5rem;
+}
+
+.playback-song-info {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
 
 /* Playlist views -----------------------------------------------------------------------------------------------------------------*/ 
 

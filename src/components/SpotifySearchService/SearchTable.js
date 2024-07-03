@@ -2,7 +2,7 @@ import React from "react";
 import SearchTableRows from "./SearchTableRows";
 import { useSearch } from "./SearchContext";
 
-const SearchTable = ({ saveSong, addSongtoPlaylist, handleCallGetPlaylists,idPlaylistSelected, playSong, pauseSong,resumeSong, setUriSelected}) => {
+const SearchTable = ({ saveSong, addSongtoPlaylist, handleCallGetPlaylists,idPlaylistSelected, playSong, setUriSelected, setCurrentSongIndex}) => {
 
     const {responseJson} = useSearch();
 
@@ -21,6 +21,7 @@ const SearchTable = ({ saveSong, addSongtoPlaylist, handleCallGetPlaylists,idPla
                             {responseJson.map((song, index) => (
                                 <SearchTableRows
                                     key={index}
+                                    index={index}
                                     id={song.id}
                                     name={song.name}
                                     artist={song.artists[0].name}
@@ -33,9 +34,8 @@ const SearchTable = ({ saveSong, addSongtoPlaylist, handleCallGetPlaylists,idPla
                                     handleCallGetPlaylists={handleCallGetPlaylists}
                                     idPlaylistSelected={idPlaylistSelected}
                                     playSong={playSong}
-                                    pauseSong={pauseSong}
                                     setUriSelected={setUriSelected}
-                                    resumeSong={resumeSong}
+                                    setCurrentSongIndex={setCurrentSongIndex}
                                 />
                             ))}
                         </tbody>

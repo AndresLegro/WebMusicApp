@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash, faPlay } from "@fortawesome/free-solid-svg-icons";
 import UpdatePlaylistForm from "./UpdatePlaylistForm";
 import Swal from 'sweetalert2';
 
 
-const PlaylistSingleView = ({ playlistSelected }) => {
+const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong }) => {
 
   const { id, image, name, description, author, songsAmount, songs } = playlistSelected;
 
@@ -92,6 +92,10 @@ const PlaylistSingleView = ({ playlistSelected }) => {
       console.error("Error:", error);
     }
   };
+
+  const handlePlaySong = ()=> {
+    playSong();
+  }
   
   return (
 
@@ -129,6 +133,7 @@ const PlaylistSingleView = ({ playlistSelected }) => {
               <div className="margin-1rem" style={{ fontWeight: 'bolder', marginLeft: "1rem" }}>{song.name} ·</div>
               <div className="margin-1rem">{song.author} ·</div>
               <div className="margin-1rem">{song.duration}</div>
+              <button id="togglePlay" className="btn btn-success playback-buttons" onClick={handlePlaySong}><FontAwesomeIcon icon={faPlay} /></button>
             </div>
           )}
         </div>

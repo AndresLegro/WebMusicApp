@@ -1,9 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFolderPlus, faHeart, faPlay, faPause } from "@fortawesome/free-solid-svg-icons";
+import { faFolderPlus, faHeart, faPlay } from "@fortawesome/free-solid-svg-icons";
 
-const SearchTableRows = ({ id, name, artist, album, duration, image, uri, 
-  saveSong, handleCallGetPlaylists, playSong, pauseSong, resumeSong, setUriSelected }) => {
+const SearchTableRows = ({ index ,id, name, artist, album, duration, image, uri, 
+  saveSong, handleCallGetPlaylists, playSong, setUriSelected, setCurrentSongIndex }) => {
 
   const minutes = Math.floor(duration / 60000);
   const seconds = ((duration % 60000) / 1000).toFixed(0);
@@ -19,10 +19,7 @@ const SearchTableRows = ({ id, name, artist, album, duration, image, uri,
   const handlePlaySongButtonClick = () => {
     playSong(uri);
     setUriSelected(uri);
-  };
-
-  const handlePauseSongButtonClick = () => {
-    pauseSong();
+    setCurrentSongIndex(index)
   };
 
   return (
@@ -43,11 +40,9 @@ const SearchTableRows = ({ id, name, artist, album, duration, image, uri,
         </div>
       </td>
       <th className="tdTableRow">
-        <button style={{marginRight: '0.1rem' }} className="btn btn-danger" onClick={handleSaveSongButtonClick}><FontAwesomeIcon icon={faHeart} /></button>
+        <button id="togglePlay" className="btn btn-success playback-buttons" onClick={handlePlaySongButtonClick}><FontAwesomeIcon icon={faPlay} /></button>
+        <button style={{ marginRight: '0.1rem' }} className="btn btn-danger" onClick={handleSaveSongButtonClick}><FontAwesomeIcon icon={faHeart} /></button>
         <button className="btn btn-info " onClick={handleAddSongtoPlaylistButtonClick}><FontAwesomeIcon icon={faFolderPlus} /></button>
-        <button id="togglePlay" className="btn btn-success " onClick={handlePlaySongButtonClick}><FontAwesomeIcon icon={faPlay} /></button>
-        <button className="btn btn-success " onClick={handlePauseSongButtonClick}><FontAwesomeIcon icon={faPause} /></button>
-        <button className="btn btn-primary" onClick={resumeSong}><FontAwesomeIcon icon={faPlay} /></button>
       </th>
     </tr>
   );

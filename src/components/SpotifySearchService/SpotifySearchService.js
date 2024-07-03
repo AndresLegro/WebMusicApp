@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import SearchForm from "./SearchForm";
 import SearchTable from "./SearchTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons"; 
+import { faXmark, faPlay, faPause, faForward, faBackward } from "@fortawesome/free-solid-svg-icons";
 import { useSearch } from "./SearchContext";
 
 //``
@@ -16,6 +16,10 @@ const SpotifySearchService = () => {
     const [idSongSelected, setIdSongSelected] = useState(null);
     const [uriSelected, setUriSelected] = useState(null);
     const [deviceId, setDeviceId] = useState(null);
+    const [currentSong, setCurrentSong] = useState(null);
+    const [currentSongIndex, setCurrentSongIndex] = useState(0);
+    const [displayResumeIcon, setDisplayResumeIcon] = useState(false);
+    const [displayPauseIcon, setDisplayPauseIcon] = useState(true);
 
    const accessToken = localStorage.getItem("spotifyToken");
 
@@ -71,6 +75,7 @@ const SpotifySearchService = () => {
 
             if (response.ok) {
                 console.log("La canción se está reproduciendo");
+                console.log(currentSong);
             } else {
                 console.error("Error al reproducir la canción:", response.status);
                 console.log(uriSelected);
@@ -120,6 +125,65 @@ const SpotifySearchService = () => {
         }
     };
 
+    const nextSong = async () => {
+        try {
+            const response = await fetch(`https://api.spotify.com/v1/me/player/next?device_id=${deviceId}`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                    "Content-Type": "application/json"
+                }
+            });
+    
+            if (response.ok) {
+                if (currentSongIndex < responseJson.length - 1) {
+                    setCurrentSong(responseJson[currentSongIndex + 1]); 
+                    setCurrentSongIndex(currentSongIndex + 1); 
+                    playSong(responseJson[currentSongIndex + 1].uri);
+                    console.log("Siguiente canción");
+                    console.log("currentSongIndex = " + currentSongIndex);
+                } else {
+                    console.log("No hay más canciones disponibles");
+                    playSong(responseJson[9].uri);
+                }
+            } else {
+                console.error("Error al pasar de canción:", response.status);
+            }
+        } catch (error) {
+            console.error("Error de red:", error);
+        }
+    };
+    
+    const previousSong = async () => {
+        try {
+            const response = await fetch(`https://api.spotify.com/v1/me/player/previous?device_id=${deviceId}`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${accessToken}`,
+                    "Content-Type": "application/json"
+                }
+            });
+    
+            if (response.ok) {
+                if (currentSongIndex > 0) {
+                    setCurrentSong(responseJson[currentSongIndex - 1]); 
+                    setCurrentSongIndex(currentSongIndex - 1); 
+                    playSong(responseJson[currentSongIndex - 1].uri);
+                    console.log("Anterior canción");
+                    console.log("currentSongIndex = " + currentSongIndex);
+                } else {
+                    console.log("No hay más canciones disponibles");
+                    console.log("currentSongIndex = " + currentSongIndex);
+                }
+            } else {
+                console.error("Error al pasar de canción:", response.status);
+            }
+        } catch (error) {
+            console.error("Error de red:", error);
+        }
+    };
+    
+
     const searchSong = async (searchTerm) => {
         try {
             const response = await fetch(`http://localhost:8080/search/${searchTerm}`);
@@ -127,7 +191,8 @@ const SpotifySearchService = () => {
                 const data = await response.json();
                 const uri = data[0].uri;
                 setResponseJson(data);
-                setUriSelected(uri); // Guardar la URI seleccionada
+                setUriSelected(uri); 
+                setCurrentSong(data[0]); 
             } else {
                 console.error("Error al iniciar sesión en Spotify:", response.status);
             }
@@ -193,6 +258,18 @@ const SpotifySearchService = () => {
         setIdPlaylistSelected(playlistId);
     };
 
+    const handleResumeOrPauseSong = () => {
+        if (displayPauseIcon === true) {
+            setDisplayPauseIcon(false);
+            setDisplayResumeIcon(true);
+            pauseSong();
+        }else{
+            setDisplayPauseIcon(true);
+            setDisplayResumeIcon(false);
+            resumeSong();
+        }
+    }
+
     useEffect(() => {
         if (idSongSelected !== null && idPlaylistSelected !== null) {
             addSongtoPlaylist(); 
@@ -204,7 +281,6 @@ const SpotifySearchService = () => {
     return(
         <div className="child-container">
             <h2 className="h2">Buscar Canciones</h2>
-    {/* <button id="togglePlay">Toggle Play</button> */}
 
             <SearchForm 
                 onSearch={searchSong}
@@ -215,9 +291,8 @@ const SpotifySearchService = () => {
                 handleCallGetPlaylists={handleCallGetPlaylists}
                 idPlaylistSelected={idPlaylistSelected}
                 playSong={playSong}
-                pauseSong={pauseSong}
                 setUriSelected={setUriSelected}
-                resumeSong={resumeSong}
+                setCurrentSongIndex={setCurrentSongIndex}
             />
 
             {callGetPlaylist && (
@@ -256,7 +331,35 @@ const SpotifySearchService = () => {
                 </div>
 
             )}
+            <div className="playback-bar">
+                {currentSong ? (
+                    <div className="playback-song-info">
+                        <img
+                            src={currentSong.album.images[0].url}
+                            alt={currentSong.name}
+                            style={{ width: "50px", height: "50px", marginRight: "1rem" }}
+                        />
+                        <div>
+                            <div style={{ fontWeight: 'bolder' }}>{currentSong.name}</div>
+                            {currentSong.artists.length > 0 && (
+                                <div style={{ fontWeight: 'bolder' }}>{currentSong.artists[0].name}</div>
+                            )}
+                        </div>
+                    </div>
 
+                    
+                ) : (
+                    <div style={{ fontWeight: 'bolder' }}>No estás reproduciendo ninguna canción ahora mismo.</div>
+                )}
+
+                <div className="playback-buttons">
+                    <button className="btn btn-dark" onClick={previousSong}><FontAwesomeIcon icon={faBackward} /></button>
+                    <button className="btn btn-dark" onClick={handleResumeOrPauseSong}>
+                        <FontAwesomeIcon icon={displayPauseIcon ? faPause : faPlay} />
+                    </button>
+                    <button className="btn btn-dark" onClick={nextSong}><FontAwesomeIcon icon={faForward} /></button>
+                </div>
+            </div>
 
         </div>
     );
