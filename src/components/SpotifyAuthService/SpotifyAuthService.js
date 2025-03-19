@@ -2,17 +2,18 @@ import React, { useState, useRef } from "react";
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
-
+import { useSearch } from "../SearchContext";
 
 const SpotifyAuthService = ({ onLogin }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [popup, setPopup] = useState(null);
     const [timeExpired, setTimeExpired] = useState(false);
     const timeExpiredRef = useRef(timeExpired);
+    const {backEndUrl} = useSearch();
 
     const logIn = async () => {
         try {
-            const url = "http://localhost:8080/spotify/login";
+            const url = `${backEndUrl}/spotify/login`;
             const newPopup = window.open(url, "_blank");
             setPopup(newPopup);
 
@@ -23,7 +24,7 @@ const SpotifyAuthService = ({ onLogin }) => {
                     timeExpiredRef.current = true; 
                     setTimeExpired(true); 
                 }
-            }, 80000);
+            }, 50000);
 
             let retryInterval = 5000;
 
@@ -33,7 +34,7 @@ const SpotifyAuthService = ({ onLogin }) => {
                 if (timeExpiredRef.current) {
                     break;
                 } else {
-                    const response = await fetch("http://localhost:8080/spotify/getToken");
+                    const response = await fetch(`${backEndUrl}/spotify/getToken`);
                     if (response.ok) {
                         const token = await response.json();
                         localStorage.setItem("spotifyToken", token);

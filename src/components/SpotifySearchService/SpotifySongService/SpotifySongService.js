@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import SearchForm from "./SpotifySearchService/SearchForm";
-
+import { useSearch } from "../SearchContext";
 
 const SpotifySongService = () => {
     const [searchAction, setSearchAction] = useState("");
     const [showForm, setShowForm] = useState(false);
+    const {backEndUrl} = useSearch();
 
     const getSong = async (searchTerm) => {
         try {
-            const response = await fetch(`http://localhost:8080/songs/get/${searchTerm}`);
+            const response = await fetch(`${backEndUrl}/songs/get/${searchTerm}`);
             setSearchAction("Buscar");
 
             if (response.ok) {
@@ -49,10 +50,6 @@ const SpotifySongService = () => {
                 <button type='button' className="btn btn-primary" onClick={handleGetSongClick}>Buscar Canciones</button>
                 <button type='button' className="btn btn-warning" onClick={handleSaveSongClick}>Guardar Canciones</button>
             </div>
-{/*              
-            {showForm && (<SongSearchForm onSearch={searchAction === "Buscar" ? getSong : saveSong} 
-                 buttonText={searchAction === "Buscar" ? "Buscar" : "Guardar"} />)
-            } */}
             
         </div>
     );

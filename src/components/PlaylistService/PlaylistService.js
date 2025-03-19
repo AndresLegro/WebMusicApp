@@ -4,6 +4,7 @@ import { faPlus, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import PlaylistSingleView from "./PlaylistSingleView";
 import { Link } from "react-router-dom";
 import CreatePlaylistForm from "./CreatePlaylistForm";
+import { useSearch } from "../SearchContext";
 import MusicPlayer from "../../shared/MusicPlayer/MusicPlayer"; // Importar el componente MusicPlayer
 // import Swal from 'sweetalert2';
 
@@ -14,6 +15,7 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
     const [playlistSelected, setPlaylistSelected ]= useState(null);
     const [callGetPlaylist, setCallGetPlaylist ]= useState(false);
     const [callCreatePlaylist, setCallCreatePlaylist ]= useState(false);
+    const {backEndUrl} = useSearch();
 
     const [formData, setFormData] = useState({
         name: "",
@@ -32,10 +34,11 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
 
     const getAllPlaylist = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/playlist/getAllPlaylist`);
+            const response = await fetch(`${backEndUrl}/playlist/getAllPlaylist`);
             if(response.ok){
                 const data = await response.json();            
                 setPlaylists(data);
+                console.log(playlists);
             }else{
                 console.error("Error al iniciar sesión en Spotify:", response.status);
             }
@@ -44,11 +47,9 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
         }     
     }
 
-
     useEffect(() => {
       getAllPlaylist();
-  }, []);
-
+    }, []);
 
     const createPlaylist = async () => {
 
@@ -57,7 +58,7 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/playlist/create`, {
+            const response = await fetch(`${backEndUrl}/playlist/create`, {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
@@ -67,7 +68,7 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
 
             if(response.ok){
                 console.log("Endpoint builded", response)
-                
+                console.log("Datos enviados", formData)
                 setCallCreatePlaylist(true);
             }else{
                 console.error("Error al iniciar sesión en Spotify:", response.status);
@@ -79,11 +80,11 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
 
     const getPlaylist = async (playlistId) => {
         try {
-            const response = await fetch(`http://localhost:8080/playlist/getPlaylist/${playlistId}`);
+            const response = await fetch(`${backEndUrl}/playlist/getPlaylist/${playlistId}`);
             if(response.ok){
                 const data = await response.json();
-                console.log("Endpoint builded", response)
-                console.log(data);
+                //console.log("Endpoint builded", response)
+                //console.log(data);
                 setPlaylistSelected(data);
                 setCallGetPlaylist(true);
             }else{
@@ -101,19 +102,24 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
 
 
     return (
-        <div className="">
-          {callGetPlaylist ? (
-            <div style={{marginTop:"2rem", marginLeft:"3rem"}}>
+      <div className="">
+        {callGetPlaylist ? (
+          <div style={{ marginTop: "2rem", marginLeft: "3rem" }}>
             <button className="back-button-playlist btn" type="button" onClick={() => setCallGetPlaylist(false)}><FontAwesomeIcon icon={faArrowLeft} /></button>
-            <PlaylistSingleView
-              playlistSelected={playlistSelected}
-              playSong={playSong}
-              pauseSong={pauseSong}
-              resumeSong={resumeSong}
-            />
 
-            </div>
-          
+            {playlistSelected ? (
+              <PlaylistSingleView
+                playlistSelected={playlistSelected}
+                playSong={playSong}
+                pauseSong={pauseSong}
+                resumeSong={resumeSong}
+              />
+            ) : (
+              <p>Cargando playlist...</p>
+            )}
+
+          </div>
+
           ) : (
             <>
               <h2 className="h2">Tus Playlist</h2>
@@ -123,49 +129,49 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
               </button>
 
               <div className="playlist-general-view">
-                {playlists.map((playlist) => (
-                  <div key={playlist.id}>
-                    <Link to="/playlist">
-                      <button
-                        type="button"
-                        className="buttons-playlist-service"
-                        onClick={() => handlePlaylistClick(playlist.id)}
-                      >
-                        <div className="conten-playlist-view">
-                          <img
-                            src={playlist.image}
-                            alt={playlist.name}
-                            style={{ width: "150px", height: "150px", marginBlockEnd: "1rem" }}
-                          />
-                          <div style={{ fontWeight: 'bolder' }}>{playlist.name}</div>
-                          <div>{playlist.songsAmount} Pistas</div>
-                        </div>
-                      </button>
-                    </Link>
+                
+              {callCreatePlaylist && (
+                  <div className={`${callCreatePlaylist ? 'blur-background' : ''}`}>
+                    <CreatePlaylistForm
+                      createPlaylist={createPlaylist}
+                      formData={formData}
+                      handleInputChange={handleInputChange}
+                      setCallCreatePlaylist={setCallCreatePlaylist}
+                    />
+                  </div>
 
-                        {callCreatePlaylist && (
-                            <div className={`${callCreatePlaylist ? 'blur-background' : ''}`}>
+                )}
 
-                                <CreatePlaylistForm
-                                    createPlaylist={createPlaylist}
-                                    formData={formData}
-                                    handleInputChange={handleInputChange}
-                                    setCallCreatePlaylist={setCallCreatePlaylist}
-
-                                />
-                            </div>
-
-                        )}
-
-                       
-                    </div>
-
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-      );
+            {playlists.length === 0 ? (
+              <p>No tienes playlists aún.</p>
+            ) : (
+              playlists.map((playlist) => (
+                <div key={playlist.id}>
+                  <Link to="/playlist">
+                    <button
+                      type="button"
+                      className="buttons-playlist-service"
+                      onClick={() => handlePlaylistClick(playlist.id)}
+                    >
+                      <div className="conten-playlist-view">
+                        <img
+                          src={playlist.image}
+                          alt={playlist.name}
+                          style={{ width: "150px", height: "150px", marginBlockEnd: "1rem" }}
+                        />
+                        <div style={{ fontWeight: "bolder" }}>{playlist.name}</div>
+                        <div>{playlist.songsAmount} Pistas</div>
+                      </div>
+                    </button>
+                  </Link>
+                </div>
+              ))
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
 
 }
 

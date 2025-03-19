@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons"; 
 import React, { useState } from "react";
-import { useSearch } from './SearchContext';
+import { useSearch } from '../SearchContext';
 
 const SearchForm = ({onSearch}) =>{
 

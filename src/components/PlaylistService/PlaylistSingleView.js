@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash, faPlay } from "@fortawesome/free-solid-svg-icons";
 import UpdatePlaylistForm from "./UpdatePlaylistForm";
 import Swal from 'sweetalert2';
-
+import { useSearch } from "../SearchContext";
 
 const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong }) => {
+
+  const {backEndUrl} = useSearch();
 
   const { id, image, name, description, author, songsAmount, songs } = playlistSelected;
 
@@ -42,7 +44,9 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong 
         return obj;
       }, {});
 
-      const response = await fetch(`http://localhost:8080/playlist/update/${id}`, {
+      console.log(filteredFormData);
+
+      const response = await fetch(`${backEndUrl}/playlist/update/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(filteredFormData),
         headers: {
@@ -77,7 +81,7 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong 
         
       }).then(async (result) => {
         if (result.isConfirmed) {
-          const response = await fetch(`http://localhost:8080/playlist/delete/${id}`, {
+          const response = await fetch(`${backEndUrl}/playlist/delete/${id}`, {
             method: 'DELETE',
           });
 
@@ -121,8 +125,8 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong 
           />
           <div className="playlist-info">
             <div style={{ fontWeight: 'bolder', fontSize: "22px", marginBlockEnd: "0.5rem" }}>{name}</div>
-            <div style={{ marginBlockEnd: '0.5rem', marginLeft: "1rem", textAlign: "center" }}>{description}</div>
             <div style={{ marginBlockEnd: '0.5rem' }}>{author}</div>
+            <div style={{ marginBlockEnd: '0.5rem', marginLeft: "1rem", textAlign: "center" }}>{description}</div>
             <div style={{ marginBlockEnd: '0.5rem' }}>{songsAmount} Pistas</div>
           </div>
         </div>

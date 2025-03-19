@@ -1,6 +1,6 @@
 import React from "react";
 import SearchTableRows from "./SearchTableRows";
-import { useSearch } from "./SearchContext";
+import { useSearch } from "../SearchContext";
 
 const SearchTable = ({ saveSong, addSongtoPlaylist, handleCallGetPlaylists,idPlaylistSelected, playSong, setUriSelected, setCurrentSongIndex}) => {
 

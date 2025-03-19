@@ -5,9 +5,8 @@ import SearchForm from "./SearchForm";
 import SearchTable from "./SearchTable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faPlay, faPause, faForward, faBackward } from "@fortawesome/free-solid-svg-icons";
-import { useSearch } from "./SearchContext";
+import { useSearch } from "../SearchContext";
 
-//``
 const SpotifySearchService = () => {
     const { responseJson, setResponseJson } = useSearch();
     const [playlists, setPlaylists] = useState([]);
@@ -20,6 +19,7 @@ const SpotifySearchService = () => {
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [displayResumeIcon, setDisplayResumeIcon] = useState(false);
     const [displayPauseIcon, setDisplayPauseIcon] = useState(true);
+    const {backEndUrl} = useSearch();
 
    const accessToken = localStorage.getItem("spotifyToken");
 
@@ -186,7 +186,7 @@ const SpotifySearchService = () => {
 
     const searchSong = async (searchTerm) => {
         try {
-            const response = await fetch(`http://localhost:8080/search/${searchTerm}`);
+            const response = await fetch(`${backEndUrl}/search/${searchTerm}`);
             if (response.ok) {
                 const data = await response.json();
                 const uri = data[0].uri;
@@ -203,7 +203,7 @@ const SpotifySearchService = () => {
 
     const saveSong = async (idSong) => {
         try {
-            const response = await fetch(`http://localhost:8080/songs/save/${idSong}`, {
+            const response = await fetch(`${backEndUrl}/songs/save/${idSong}`, {
                 method: 'POST'
             });
 
@@ -220,7 +220,7 @@ const SpotifySearchService = () => {
 
     const addSongtoPlaylist = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/playlist/addSong/${idSongSelected}/${idPlaylistSelected}`, {
+            const response = await fetch(`${backEndUrl}/playlist/addSong/${idSongSelected}/${idPlaylistSelected}`, {
                 method: 'POST'
             });
 
@@ -236,7 +236,7 @@ const SpotifySearchService = () => {
 
     const getAllPlaylist = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/playlist/getAllPlaylist`);
+            const response = await fetch(`${backEndUrl}/playlist/getAllPlaylist`);
             if(response.ok){
                 const data = await response.json();            
                 setPlaylists(data);
