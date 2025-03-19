@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {} from "react";
 
 const CreatePlaylistForm = ({createPlaylist, formData, handleInputChange, setCallCreatePlaylist }) => {
-    const { name } = formData; 
+    //const { name } = formData; 
 
     return (
         <div className="center-table-form">
