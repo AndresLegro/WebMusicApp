@@ -1,8 +1,9 @@
 package com.playlist.playlist.demo.service.impl;
 import com.playlist.playlist.demo.commons.Endpoints;
 import com.playlist.playlist.demo.configuration.SpotifyConfig;
+import com.playlist.playlist.demo.exception.CustomErrorCodeResponse;
+import com.playlist.playlist.demo.exception.ErrorResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.*;
@@ -13,6 +14,7 @@ import com.playlist.playlist.demo.configuration.AccessTokenResponse;
 import com.playlist.playlist.demo.service.interfaces.ISpotifyAuthService;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 
@@ -61,7 +63,14 @@ public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
 
         if (!responseEntity.getHeaders().getContentType().includes(MediaType.APPLICATION_JSON)) {
             System.out.println("Error en la petición de token de Spotify");
+            ErrorResponse errorResponse = ErrorResponse.builder()
+                    .code(CustomErrorCodeResponse.USER_NOT_FOUND)
+                    .timestamp(String.valueOf(LocalDateTime.now()))
+                    .description("El usuario no existe o no se pudo autenticar en Spotify")
+                    .build();
+
             return null;
+            //throw new ResponseStatusException(HttpStatus.NOT_FOUND).setDetail(errorResponse);
         } else {
             String pruebaBody = String.valueOf(responseEntity.getBody());
             AccessTokenResponse responseBody = responseEntity.getBody();

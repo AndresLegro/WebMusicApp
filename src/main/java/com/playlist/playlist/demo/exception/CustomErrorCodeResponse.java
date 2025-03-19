@@ -1,2 +1,14 @@
-package com.playlist.playlist.demo.exception;public class CustomErrorCodeResponse {
+package com.playlist.playlist.demo.exception;
+
+public interface CustomErrorCodeResponse {
+
+    String USER_NOT_FOUND = "E1001";
+    String USER_NOT_AUTHENTICATED = "E1002";
+    // 400 - BAD REQUEST
+    String INVALID_OR_INCOMPLETE_DATA = "E1003";
+    // 409 - CONFLICT - WHEN THERE AREN'T DATA TO UPDATE BECAUSE ALL THE REQUEST BODY ALREADY EXISTS IN DATABASE
+    String DATA_ALREADY_EXISTS = "E1004";
+    String FANTASY_NAME_ALREADY_EXISTS = "E1005";
+    String PRODUCT_NOT_FOUND = "E1006";
+    String INTERNAL_SERVER_ERROR = "E1007";
 }
