@@ -22,9 +22,10 @@ const SearchForm = ({onSearch}) =>{
     };
 
     return(
-        <div className=''>
-            <form className='' onSubmit={handleSubmit}>
+        <div className='search-container'>
+            <form className='searching-bar' onSubmit={handleSubmit}>
                 <input className='searching-bar'
+                    style={{ backgroundColor: "#363636", marginTop: "1rem"}}
                     type="text"
                     placeholder='Escribe lo que deseas buscar'
                     value={searchTerm}

@@ -1,5 +1,5 @@
 /* global Spotify */
-
+import Swal from 'sweetalert2';
 import React, { useEffect, useState } from "react";
 import SearchForm from "./SearchForm";
 import SearchTable from "./SearchTable";
@@ -77,11 +77,11 @@ const SpotifySearchService = () => {
                 console.log("La canción se está reproduciendo");
                 console.log(currentSong);
             } else {
-                console.error("Error al reproducir la canción:", response.status);
+                Swal.fire("Error", "Error al reproducir la canción:", response.status);
                 console.log(uriSelected);
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }
     };
 
@@ -98,10 +98,10 @@ const SpotifySearchService = () => {
             if (response.ok) {
                 console.log("La canción se pausó");
             } else {
-                console.error("Error al pausar la canción:", response.status);
+                Swal.fire("Error", "Error al pausar la canción:", response.status);
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }
     };
 
@@ -118,10 +118,10 @@ const SpotifySearchService = () => {
             if (response.ok) {
                 console.log("La canción se ha resumido");
             } else {
-                console.error("Error al resumir la canción:", response.status);
+                Swal.fire("Error", "Error al reanudar la canción:", response.status);
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }
     };
 
@@ -147,10 +147,10 @@ const SpotifySearchService = () => {
                     playSong(responseJson[9].uri);
                 }
             } else {
-                console.error("Error al pasar de canción:", response.status);
+                Swal.fire("Error", "Error al pasar de canción:", response.status);
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }
     };
     
@@ -176,10 +176,10 @@ const SpotifySearchService = () => {
                     console.log("currentSongIndex = " + currentSongIndex);
                 }
             } else {
-                console.error("Error al pasar de canción:", response.status);
+                Swal.fire("Error", "Error al pasar de canción:", response.status);
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }
     };
     
@@ -194,10 +194,10 @@ const SpotifySearchService = () => {
                 setUriSelected(uri); 
                 setCurrentSong(data[0]); 
             } else {
-                console.error("Error al iniciar sesión en Spotify:", response.status);
+                Swal.fire("Error", "Tu sesion caduco, inicia de sesion nuevamente!");
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }     
     };
 
@@ -211,10 +211,10 @@ const SpotifySearchService = () => {
                 console.log("Endpoint builded", response);
                 console.log(response.json());
             } else if (response.status === 409){
-                console.error("La canción ya ha sido guardada!", response.status);
+                Swal.fire("Error", "Ya guardaste esta cancion!");
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }
     };
 
@@ -226,11 +226,12 @@ const SpotifySearchService = () => {
 
             if (response.ok) {
                 console.log("Endpoint builded", response);
+                setIdPlaylistSelected(null);
             } else if (response.status === 409){
-                console.error("La canción ya ha sido guardada!", response.status);
+                Swal.fire("Error", "Tu sesion caduco, inicia de sesion nuevamente!");
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }
     };
 
@@ -241,10 +242,10 @@ const SpotifySearchService = () => {
                 const data = await response.json();            
                 setPlaylists(data);
             } else {
-                console.error("Error al iniciar sesión en Spotify:", response.status);
+                Swal.fire("Error", "Error!");
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error del servidor!");
         }     
     };
 
@@ -274,6 +275,9 @@ const SpotifySearchService = () => {
         if (idSongSelected !== null && idPlaylistSelected !== null) {
             addSongtoPlaylist(); 
             setCallGetPlaylist(false);
+
+            setIdSongSelected(null);
+            setIdPlaylistSelected(null);
         }
     }, [idSongSelected, idPlaylistSelected]); // Observar cambios en idSongSelected e idPlaylistSelected
 
@@ -337,7 +341,6 @@ const SpotifySearchService = () => {
                         <img
                             src={currentSong.album.images[0].url}
                             alt={currentSong.name}
-                            style={{ width: "50px", height: "50px", marginRight: "1rem" }}
                         />
                         <div>
                             <div style={{ fontWeight: 'bolder' }}>{currentSong.name}</div>
@@ -349,7 +352,7 @@ const SpotifySearchService = () => {
 
                     
                 ) : (
-                    <div style={{ fontWeight: 'bolder' }}>No estás reproduciendo ninguna canción ahora mismo.</div>
+                    <div className="playback-font">No estás reproduciendo ninguna canción ahora mismo.</div>
                 )}
 
                 <div className="playback-buttons">

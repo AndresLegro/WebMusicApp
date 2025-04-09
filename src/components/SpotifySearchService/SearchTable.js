@@ -10,7 +10,7 @@ const SearchTable = ({ saveSong, addSongtoPlaylist, handleCallGetPlaylists,idPla
         <div className="">
             <div className="card-body background-gradient">
                 <div className="">
-                    <table className="table align-middle table-borderless">
+                    <table style={{marginBottom:'10rem'}} className="table align-middle table-borderless">
                     <thead className="text-center">
                             <tr>
                                 <th className="thTable">Canciones Encontradas</th>    

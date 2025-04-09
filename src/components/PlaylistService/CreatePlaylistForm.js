@@ -9,7 +9,7 @@ const CreatePlaylistForm = ({createPlaylist, formData, handleInputChange, setCal
           <div className="card-body">
             <h3 className="h2" style={{ fontWeight: 'bolder' }}>Crear Playlist</h3>
             <br></br>
-            <form onSubmit={() => createPlaylist()}>
+            <form onSubmit={(e) => { createPlaylist();}}>
               <div className="mb-3">
                 <label className="form-label">
                   Nombre
@@ -21,19 +21,6 @@ const CreatePlaylistForm = ({createPlaylist, formData, handleInputChange, setCal
                   className="form-control"
                   onChange={handleInputChange}
                   value={formData.name}
-                />
-              </div>
-              <div className="mb-3">
-                <label className="form-label">
-                  Autor
-                </label>
-                <input
-                  type="text"
-                  name="author"
-                  placeholder="Autor de la playlist"
-                  className="form-control"
-                  onChange={handleInputChange}
-                  value={formData.author}
                 />
               </div>
               <div className="mb-3">

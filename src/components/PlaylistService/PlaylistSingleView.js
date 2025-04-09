@@ -5,7 +5,7 @@ import UpdatePlaylistForm from "./UpdatePlaylistForm";
 import Swal from 'sweetalert2';
 import { useSearch } from "../SearchContext";
 
-const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong }) => {
+const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong, setCallGetPlaylist }) => {
 
   const {backEndUrl} = useSearch();
 
@@ -87,6 +87,12 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong 
 
           if (response.ok) {
             console.log("Playlist eliminada con éxito");
+            Swal.fire({
+              title: 'Exito',
+              text: `Boraste a : '${name}'`,
+              icon: 'success',
+            })
+            setCallGetPlaylist(false);
           } else {
             console.error("Error al eliminar la playlist:", response.status);
           }
@@ -103,16 +109,21 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong 
   
   return (
 
-    <div className="">
-      <button className="edit-button-playlist btn" onClick={() => setIsEditing(true)}>
-        <FontAwesomeIcon icon={faPen} />
-        <span style={{ marginLeft: "0.5rem" }}>Editar</span>
-      </button>
-      <button className="delete-button-playlist btn" onClick={() => deletePlaylist(id)}>
-        <FontAwesomeIcon icon={faTrash} />
-        <span style={{ marginLeft: "0.5rem" }}>Borrar</span>
-      </button>
-      <h2 className="h2">Esto es " {playlistSelected.name} "</h2>
+    <div className="container-singleView-playlist">
+      <div className="buttons-singleView-playlist">
+
+        <button className="edit-button-playlist btn" onClick={() => setIsEditing(true)}>
+          <FontAwesomeIcon icon={faPen} />
+          <span style={{ marginLeft: "0.5rem" }}>Editar</span>
+        </button>
+        <button className="delete-button-playlist btn" onClick={() => deletePlaylist(id)}>
+          <FontAwesomeIcon icon={faTrash} />
+          <span style={{ marginLeft: "0.5rem" }}>Borrar</span>
+        </button>
+
+      </div>
+      
+      <h2 className="h2-singleView-playlist">Esto es " {playlistSelected.name} "</h2>
 
       <div className={`playlist-general-view ${isEditing ? 'blur-background' : ''}`}>
         <div className="content-single-playlist-view">
@@ -130,10 +141,13 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong 
             <div style={{ marginBlockEnd: '0.5rem' }}>{songsAmount} Pistas</div>
           </div>
         </div>
-        <div className="songs-playlist-info">
+    
+      </div>
+
+      <div className="songs-playlist-info">
           {songs.map((song) =>
             <div className="search-result" key={song.id}>
-              <img src={song.image} alt={song.name} style={{ width: "150px", height: "150px" }} />
+              <img src={song.image} alt={song.name}  />
               <div className="margin-1rem" style={{ fontWeight: 'bolder', marginLeft: "1rem" }}>{song.name} ·</div>
               <div className="margin-1rem">{song.author} ·</div>
               <div className="margin-1rem">{song.duration}</div>
@@ -141,7 +155,6 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong 
             </div>
           )}
         </div>
-      </div>
 
       {isEditing && (
         <div className={`${isEditing ? 'blur-background' : ''}`}>

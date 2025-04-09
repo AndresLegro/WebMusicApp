@@ -19,7 +19,6 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
 
     const [formData, setFormData] = useState({
         name: "",
-        author:"",
         description: "Sin descripcion",
         image: ""
       });
@@ -38,7 +37,6 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
             if(response.ok){
                 const data = await response.json();            
                 setPlaylists(data);
-                console.log(playlists);
             }else{
                 console.error("Error al iniciar sesión en Spotify:", response.status);
             }
@@ -48,7 +46,13 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
     }
 
     useEffect(() => {
-      getAllPlaylist();
+
+      const timeOut = setTimeout(()=> {
+        getAllPlaylist();
+        console.log(playlists);
+      }, 600)
+
+      return () => clearTimeout(timeOut);
     }, []);
 
     const createPlaylist = async () => {
@@ -113,6 +117,7 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
                 playSong={playSong}
                 pauseSong={pauseSong}
                 resumeSong={resumeSong}
+                setCallGetPlaylist={setCallGetPlaylist}
               />
             ) : (
               <p>Cargando playlist...</p>
@@ -122,7 +127,7 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
 
           ) : (
             <>
-              <h2 className="h2">Tus Playlist</h2>
+              <h2 className="h2-singleView-playlist">Tus Playlist</h2>
               <button className="add-button-playlist btn" onClick={() => setCallCreatePlaylist(true)}>
                 <FontAwesomeIcon icon={faPlus} />
                 <span style={{ marginLeft: "0.5rem" }}>Crear</span>
@@ -157,7 +162,7 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
                         <img
                           src={playlist.image}
                           alt={playlist.name}
-                          style={{ width: "150px", height: "150px", marginBlockEnd: "1rem" }}
+                          className="playlist-img"
                         />
                         <div style={{ fontWeight: "bolder" }}>{playlist.name}</div>
                         <div>{playlist.songsAmount} Pistas</div>

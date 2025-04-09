@@ -9,68 +9,65 @@ import { SearchProvider } from ".//components/SearchContext";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
-  const {backEndUrl} = SearchProvider;
+  const [isLoading, setIsLoading] = useState(true);
+ 
+   const handleLogin = async () => {  
+      const now = new Date().getTime();
+      localStorage.setItem("spotifyToken", "true");     
+      localStorage.setItem("loginTime", now);
 
-  useEffect(() => {
-
-    const checkSession = async () => {
-      console.log(loggedIn);
-
-      const storedLogin = localStorage.getItem("loggedIn") === "true";
-
-      if (storedLogin) {
-        try {
-          const response = await fetch(`${backEndUrl}/spotify/getToken`)
-
-          if (response.status === 200) {
-            handleLogin();
-          } else {
-            handleLogout();
-            console.log("La sesion expiro");
-          }
-
-        } catch (error) {
-          console.error("Error verificando sesión:", error);
-          handleLogout();
-        }
-      }
-
-    };
-
-    checkSession();
-  }, []);
-
-  const handleLogin = async () => {     
       setLoggedIn(true);
-      localStorage.setItem("loggedIn" , "true");
-      console.log("User logged in!");
-  };
+      console.log("User logged in!", loggedIn, localStorage.getItem("spotifyToken"));
+   };
 
-  const handleLogout = () => {
+   const handleLogout = async () => {  
+    localStorage.setItem("spotifyToken", "false");   
+    localStorage.removeItem("loginTime");      
     setLoggedIn(false);
-    localStorage.removeItem("loggedIn");
-  };
+    console.log("User logged out!", loggedIn);
+ };
 
-  useEffect(() => {
-   //localStorage.getItem(loggedIn);
-   console.log(loggedIn);
+   useEffect(() => {
+    console.log("local storage: ",localStorage.getItem("spotifyToken") , loggedIn);
+
+    const isLoggedIn = JSON.parse(localStorage.getItem("spotifyToken") || "false"); 
+    const loginTime = localStorage.getItem("loginTime");
+    const expirationTime = 12 * 60 * 60 * 1000;
+
+    if(isLoggedIn && loginTime){
+      const elapsedTime = new Date().getTime() - parseInt(loginTime, 10);
+        
+        if (elapsedTime > expirationTime) {
+            // Si han pasado más de 12 horas, desloguear
+            handleLogout();
+            setLoggedIn(false);
+        } else {
+            setLoggedIn(true);
+        }
+    }else{
+      setLoggedIn(false);
+    }
+    setIsLoading(false);
   }, []);
+
+  if (isLoading) {
+    return <div>Cargando...</div>; // Evita redirecciones hasta que termine la verificación
+  }
 
   return (
     <SearchProvider>
       <Router>
         <div className="main-container">
-          {loggedIn && <div className=""><Sidebar /></div>}
           <div className="child-container">
+            {loggedIn && <div className="sidebar"><Sidebar handleLogout={handleLogout} /></div>}
+
             <Routes>
-              <Route
-                exact
-                path="/"
-                element={!loggedIn ? <SpotifyAuthService onLogin={handleLogin} /> : <Navigate to="/search" />}
-              />
-              <Route path="/search" element={<SpotifySearchService />} />
-              <Route path="/playlist" element={<PlaylistService />} />
-              <Route path="/getPlaylist" element={<PlaylistSingleView />} />
+
+              <Route path="/" element={!loggedIn ? <SpotifyAuthService onLogin={handleLogin} /> : <Navigate to="search"/>}/>
+              <Route path="/search" element={loggedIn ? <SpotifySearchService /> : <Navigate to="/"/>} />
+              <Route path="/playlist" element={loggedIn ? <PlaylistService /> : <Navigate to="/"/>} />
+              <Route path="/getPlaylist" element={loggedIn ? <PlaylistSingleView /> : <Navigate to="/"/>} />
+
             </Routes>
           </div>
         </div>

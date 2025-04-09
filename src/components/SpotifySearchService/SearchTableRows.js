@@ -28,21 +28,21 @@ const SearchTableRows = ({ index ,id, name, artist, album, duration, image, uri,
       <td className="tdInfoRow">
         <div className="search-result">
 
-          <img src={image} alt={album} style={{ width: "100px", height: "100px" }} />
+          <img src={image} alt={album} />
 
           <div className="fit-objects">
-            <div className="margin-1rem" style={{fontWeight: 'bolder' }}>{name} ·</div>
-            <div className="margin-1rem">{artist} ·</div>
-            <div className="margin-1rem">{`${minutes}:${(seconds < 10 ? "0" : "")}${seconds}`} ·</div>
+            <div className="margin-1rem" style={{fontWeight: 'bolder' }}>{name}</div>
+            <div className="margin-1rem">{artist}</div>
+            <div className="margin-1rem">{`${minutes}:${(seconds < 10 ? "0" : "")}${seconds}`}</div>
             <div className="margin-1rem">{album}</div>
           </div>
 
         </div>
       </td>
       <th className="tdTableRow">
-        <button id="togglePlay" className="btn btn-success playback-buttons" onClick={handlePlaySongButtonClick}><FontAwesomeIcon icon={faPlay} /></button>
-        <button style={{ marginRight: '0.1rem' }} className="btn btn-danger" onClick={handleSaveSongButtonClick}><FontAwesomeIcon icon={faHeart} /></button>
-        <button className="btn btn-info " onClick={handleAddSongtoPlaylistButtonClick}><FontAwesomeIcon icon={faFolderPlus} /></button>
+        <button id="togglePlay" className="btn btn-success playback-buttons search-buttons" onClick={handlePlaySongButtonClick}><FontAwesomeIcon icon={faPlay} /></button>
+        <button style={{ marginRight: '0.1rem' }} className="btn btn-danger search-buttons" onClick={handleSaveSongButtonClick}><FontAwesomeIcon icon={faHeart} /></button>
+        <button className="btn btn-info search-buttons" onClick={handleAddSongtoPlaylistButtonClick}><FontAwesomeIcon icon={faFolderPlus} /></button>
       </th>
     </tr>
   );
