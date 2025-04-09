@@ -27,6 +27,13 @@ function App() {
 
    useEffect(() => {
 
+    const token = localStorage.getItem("spotifyToken");
+    const isLoggedInFlag = localStorage.getItem("loginTime");
+
+    if(!token || token === false || !isLoggedInFlag){
+      localStorage.clear();
+    }
+
     const isLoggedIn = JSON.parse(localStorage.getItem("spotifyToken") || "false"); 
     const loginTime = localStorage.getItem("loginTime");
     const expirationTime = 12 * 60 * 60 * 1000;
