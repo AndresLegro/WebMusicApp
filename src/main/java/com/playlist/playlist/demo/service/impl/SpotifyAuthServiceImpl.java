@@ -22,13 +22,13 @@ import java.util.Optional;
 @AllArgsConstructor
 public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
 
-    Endpoints endpoints;
+    private Endpoints endpoints;
 
     private RestTemplate restTemplate;
 
-    AccessTokenResponse accessTokenResponse;
+    private AccessTokenResponse accessTokenResponse;
 
-    SpotifyConfig spotifyConfig;
+    private SpotifyConfig spotifyConfig;
 
 
     @Override
@@ -70,9 +70,7 @@ public class SpotifyAuthServiceImpl implements ISpotifyAuthService {
                     .build();
 
             return null;
-            //throw new ResponseStatusException(HttpStatus.NOT_FOUND).setDetail(errorResponse);
         } else {
-            String pruebaBody = String.valueOf(responseEntity.getBody());
             AccessTokenResponse responseBody = responseEntity.getBody();
             saveAccessToken(responseBody.getAccessToken());
             return responseBody.getAccessToken();

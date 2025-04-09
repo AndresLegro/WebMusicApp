@@ -31,7 +31,7 @@ public class PlaylistEntity {
     @Column(name = "songs_amount", nullable = false)
     private int songsAmount;
 
-    @Column(name = "image", length = 512)
+    @Column(name = "image", length = 2048)
     private String image;
 
     @Column(name = "is_deleted")
@@ -40,5 +40,7 @@ public class PlaylistEntity {
     @OneToMany(mappedBy = "playlist")
     private List<PlaylistSongEntity> playlistSongs;
 
+    @Column(name = "id_user", nullable = false)
+    private Integer idUser;
 
 }

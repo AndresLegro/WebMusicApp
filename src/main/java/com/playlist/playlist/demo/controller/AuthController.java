@@ -66,15 +66,11 @@ public class AuthController {
     })
     @GetMapping("/getToken")
     @CrossOrigin(origins = {"http://localhost:3000", "https://gentle-meadow-0c609e00f.6.azurestaticapps.net"})
-    public Optional<?> getAccessToken(){
+    public ResponseEntity<Optional<?>> getAccessToken(){
         if (serviceAuth.getAccessToken().isPresent()){
-            return serviceAuth.getAccessToken();
+            return new ResponseEntity<>(serviceAuth.getAccessToken(), HttpStatus.OK);
         }else{
-            return Optional.ofNullable(ErrorResponse.builder()
-                    .code(CustomErrorCodeResponse.USER_NOT_AUTHENTICATED)
-                    .timestamp(String.valueOf(LocalDateTime.now()))
-                    .description("El usuario no se ha autenticado en Spotify")
-                    .build());
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
 

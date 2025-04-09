@@ -4,13 +4,11 @@ import com.playlist.playlist.demo.domain.converter.PlaylistEntityToDto;
 import com.playlist.playlist.demo.domain.converter.SongConverter;
 import com.playlist.playlist.demo.domain.dto.PlaylistDto;
 import com.playlist.playlist.demo.domain.dto.SongDto;
-import com.playlist.playlist.demo.domain.entity.PlaylistEntity;
-import com.playlist.playlist.demo.domain.entity.PlaylistSongEntity;
-import com.playlist.playlist.demo.domain.entity.PlaylistSongId;
-import com.playlist.playlist.demo.domain.entity.SongEntity;
+import com.playlist.playlist.demo.domain.entity.*;
 import com.playlist.playlist.demo.repository.PlaylistRepository;
 import com.playlist.playlist.demo.repository.PlaylistSongRepository;
 import com.playlist.playlist.demo.repository.SongRepository;
+import com.playlist.playlist.demo.repository.UserRepository;
 import com.playlist.playlist.demo.service.interfaces.IPlaylistService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,13 +30,17 @@ public class PlaylistServiceImpl implements IPlaylistService {
     SongRepository songRepository;
     SpotifySongsService songsService;
     PlaylistSongRepository playlistSongRepository;
+    UserRepository  userRepository;
+
+    LogInService logInService;
 
     private ArrayList<SongEntity> playlist = new ArrayList<SongEntity>();
 
     @Override
     public Optional<PlaylistDto> getPlaylist(int idPlaylist) {
 
-        Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIsDeletedFalse(idPlaylist);
+
+        Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIdUserAndIsDeletedFalse(idPlaylist,logInService.getIdUserLogged() );
         if (playlistToFind.isPresent()){
 
             PlaylistEntity playlist = playlistToFind.get();
@@ -62,7 +64,7 @@ public class PlaylistServiceImpl implements IPlaylistService {
     @Override
     public Optional<List<PlaylistDto>> getAllPlaylist() {
 
-        Optional<List<PlaylistDto>> mapAllPlaylist = Optional.of(playlistRepository.findAllByAndIsDeletedFalse().stream().map(
+        Optional<List<PlaylistDto>> mapAllPlaylist = Optional.of(playlistRepository.findAllByIdUserAndIsDeletedFalse(logInService.getIdUserLogged()).stream().map(
                 playlistEntities -> playlistEntityToDto.convert(playlistEntities)
         ).collect(Collectors.toList()));
 
@@ -74,7 +76,7 @@ public class PlaylistServiceImpl implements IPlaylistService {
     @Override
     public List<SongEntity> createPlaylist(PlaylistEntity playlistToCreate) {
 
-        List<PlaylistEntity> playlistDataBase = playlistRepository.findAll();
+        List<PlaylistEntity> playlistDataBase = playlistRepository.findAllByIdUserAndIsDeletedFalse(logInService.getIdUserLogged());
 
         boolean nameExists = playlistDataBase.stream().anyMatch(playlistName ->
                 playlistName.getName().equalsIgnoreCase(playlistToCreate.getName()));
@@ -83,12 +85,15 @@ public class PlaylistServiceImpl implements IPlaylistService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, String.format("La playlist con nombre %S ya existe!", playlistToCreate.getName()));
         }
 
+        UserEntity userLogged = userRepository.findByIdUser(logInService.getIdUserLogged());
+
         PlaylistEntity playlistEntity = PlaylistEntity.builder()
                 .name(playlistToCreate.getName())
-                .author(playlistToCreate.getAuthor())
+                .author(userLogged.getUsername())
                 .description(playlistToCreate.getDescription())
                 .songsAmount(0)
                 .image(playlistToCreate.getImage())
+                .idUser(logInService.getIdUserLogged())
                 .build();
 
         playlistRepository.save(playlistEntity);
@@ -98,7 +103,7 @@ public class PlaylistServiceImpl implements IPlaylistService {
     @Override
     public PlaylistDto updatePlayList(PlaylistEntity playlistChanged, int idPlaylist) {
 
-        Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIsDeletedFalse(idPlaylist);
+        Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIdUserAndIsDeletedFalse(idPlaylist, logInService.getIdUserLogged());
 
         if( playlistToFind.isPresent()){
             PlaylistEntity playlistEntity = playlistToFind.get();
@@ -131,7 +136,7 @@ public class PlaylistServiceImpl implements IPlaylistService {
 
     @Override
     public void deletePlaylist(int idPlaylist) {
-        Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIsDeletedFalse(idPlaylist);
+        Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIdUserAndIsDeletedFalse(idPlaylist,logInService.getIdUserLogged());
 
         if (playlistToFind.isPresent()){
             PlaylistEntity playlistEntity = playlistToFind.get();
@@ -145,7 +150,7 @@ public class PlaylistServiceImpl implements IPlaylistService {
         @Override
         public void addSongToPlaylist(String idSong, int idPlaylist) {
 
-            Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIsDeletedFalse(idPlaylist);
+            Optional<PlaylistEntity> playlistToFind = playlistRepository.findByIdAndIdUserAndIsDeletedFalse(idPlaylist, logInService.getIdUserLogged());
             Optional<SongEntity> songToFind = songRepository.findById(idSong);
 
             if(songToFind.isEmpty()){
