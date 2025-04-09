@@ -37,8 +37,8 @@ const SpotifyAuthService = ({ onLogin }) => {
                 const getToken = await fetch(`${backEndUrl}/spotify/getToken`,
                      {method: "GET", headers: {"Content-Type": "application/json" }});
 
-                let tries = 5;
-                let time = 3000;
+                let tries = 8;
+                let time = 4000;
                 let tokenObtained = false;
 
                 while (tries > 0){
@@ -47,11 +47,9 @@ const SpotifyAuthService = ({ onLogin }) => {
                         {method: "GET", headers: {"Content-Type": "application/json" }});
 
                     if (getToken.ok){
-                        console.log("Token respuesta 200 ok")
                         tokenObtained= true;
                         break;
                     }else{
-                        console.log(`Fallo al obtener en el login. Reintentando... (${tries} intentos restantes)`);
                         await waiting(time);
                         tries--;
                     }

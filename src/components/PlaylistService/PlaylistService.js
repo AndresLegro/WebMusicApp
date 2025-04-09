@@ -5,6 +5,7 @@ import PlaylistSingleView from "./PlaylistSingleView";
 import { Link } from "react-router-dom";
 import CreatePlaylistForm from "./CreatePlaylistForm";
 import { useSearch } from "../SearchContext";
+import Swal from 'sweetalert2';
 import MusicPlayer from "../../shared/MusicPlayer/MusicPlayer"; // Importar el componente MusicPlayer
 // import Swal from 'sweetalert2';
 
@@ -38,10 +39,10 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
                 const data = await response.json();            
                 setPlaylists(data);
             }else{
-                console.error("Error al iniciar sesión en Spotify:", response.status);
+                Swal.fire("Error", "Error al iniciar sesión en Spotify!");
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error de red!");
         }     
     }
 
@@ -49,7 +50,6 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
 
       const timeOut = setTimeout(()=> {
         getAllPlaylist();
-        console.log(playlists);
       }, 600)
 
       return () => clearTimeout(timeOut);
@@ -57,8 +57,8 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
 
     const createPlaylist = async () => {
 
-        if(formData.name === "" || formData.author === "" || formData.image === ""){
-            console.error("Faltan datos para crear la playlist");
+        if(formData.name === "" || formData.image === ""){
+            Swal.fire("Error", "Faltan campos por llenar!");
         }
 
         try {
@@ -71,14 +71,12 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
               });
 
             if(response.ok){
-                console.log("Endpoint builded", response)
-                console.log("Datos enviados", formData)
                 setCallCreatePlaylist(true);
             }else{
-                console.error("Error al iniciar sesión en Spotify:", response.status);
+              Swal.fire("Error", "Error al iniciar sesión en Spotify!");
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error de red!");
         }     
     }
 
@@ -87,15 +85,13 @@ const PlaylistService = (playSong, pauseSong, resumeSong) =>{
             const response = await fetch(`${backEndUrl}/playlist/getPlaylist/${playlistId}`);
             if(response.ok){
                 const data = await response.json();
-                //console.log("Endpoint builded", response)
-                //console.log(data);
                 setPlaylistSelected(data);
                 setCallGetPlaylist(true);
             }else{
-                console.error("Error al iniciar sesión en Spotify:", response.status);
+              Swal.fire("Error", "Error al iniciar sesión en Spotify!");
             }
         } catch (error) {
-            console.error("Error de red:", error);
+          Swal.fire("Error", "Error de red!");
         }     
     }
 

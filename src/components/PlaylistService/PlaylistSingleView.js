@@ -44,8 +44,6 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong,
         return obj;
       }, {});
 
-      console.log(filteredFormData);
-
       const response = await fetch(`${backEndUrl}/playlist/update/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(filteredFormData),
@@ -56,14 +54,12 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong,
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Endpoint builded", response)
-        console.log(data);
         setIsEditing(false);
       } else {
-        console.error("Debes escribir algo para actualizar tu playlist", response.status);
+        Swal.fire("Error", "Debes escribir algo para actualizar la playlist!");
       }
     } catch (error) {
-      console.error("Error de red:", error);
+      Swal.fire("Error", "Error de red!");
     }
   }
 
@@ -86,7 +82,6 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong,
           });
 
           if (response.ok) {
-            console.log("Playlist eliminada con éxito");
             Swal.fire({
               title: 'Exito',
               text: `Boraste a : '${name}'`,
@@ -94,12 +89,12 @@ const PlaylistSingleView = ({ playlistSelected, playSong, pauseSong, resumeSong,
             })
             setCallGetPlaylist(false);
           } else {
-            console.error("Error al eliminar la playlist:", response.status);
+            Swal.fire("Error", "Error al eliminar la playlist!");
           }
         }
       });
     } catch (error) {
-      console.error("Error:", error);
+      Swal.fire("Error", "Error de red!");
     }
   };
 

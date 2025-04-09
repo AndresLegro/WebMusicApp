@@ -17,18 +17,15 @@ function App() {
       localStorage.setItem("loginTime", now);
 
       setLoggedIn(true);
-      console.log("User logged in!", loggedIn, localStorage.getItem("spotifyToken"));
    };
 
    const handleLogout = async () => {  
     localStorage.setItem("spotifyToken", "false");   
     localStorage.removeItem("loginTime");      
     setLoggedIn(false);
-    console.log("User logged out!", loggedIn);
  };
 
    useEffect(() => {
-    console.log("local storage: ",localStorage.getItem("spotifyToken") , loggedIn);
 
     const isLoggedIn = JSON.parse(localStorage.getItem("spotifyToken") || "false"); 
     const loginTime = localStorage.getItem("loginTime");

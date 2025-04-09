@@ -47,12 +47,11 @@ const SpotifySearchService = () => {
             // Ready
             player.addListener('ready', ({ device_id }) => {
                 setDeviceId(device_id);
-                console.log('Ready with Device ID', device_id);
             });
 
             // Not Ready
             player.addListener('not_ready', ({ device_id }) => {
-                console.log('Device ID has gone offline', device_id);
+                Swal.fire("Error", "Device ID has gone offline!");
             });
 
             player.connect();
@@ -75,10 +74,8 @@ const SpotifySearchService = () => {
 
             if (response.ok) {
                 console.log("La canción se está reproduciendo");
-                console.log(currentSong);
             } else {
                 Swal.fire("Error", "Error al reproducir la canción:", response.status);
-                console.log(uriSelected);
             }
         } catch (error) {
             Swal.fire("Error", "Error del servidor!");
@@ -140,10 +137,8 @@ const SpotifySearchService = () => {
                     setCurrentSong(responseJson[currentSongIndex + 1]); 
                     setCurrentSongIndex(currentSongIndex + 1); 
                     playSong(responseJson[currentSongIndex + 1].uri);
-                    console.log("Siguiente canción");
-                    console.log("currentSongIndex = " + currentSongIndex);
                 } else {
-                    console.log("No hay más canciones disponibles");
+                    Swal.fire("Error", "No hay más canciones disponibles!");
                     playSong(responseJson[9].uri);
                 }
             } else {
@@ -169,11 +164,8 @@ const SpotifySearchService = () => {
                     setCurrentSong(responseJson[currentSongIndex - 1]); 
                     setCurrentSongIndex(currentSongIndex - 1); 
                     playSong(responseJson[currentSongIndex - 1].uri);
-                    console.log("Anterior canción");
-                    console.log("currentSongIndex = " + currentSongIndex);
                 } else {
-                    console.log("No hay más canciones disponibles");
-                    console.log("currentSongIndex = " + currentSongIndex);
+                    Swal.fire("Error", "No hay más canciones disponibles!");
                 }
             } else {
                 Swal.fire("Error", "Error al pasar de canción:", response.status);
@@ -207,10 +199,7 @@ const SpotifySearchService = () => {
                 method: 'POST'
             });
 
-            if (response.ok) {
-                console.log("Endpoint builded", response);
-                console.log(response.json());
-            } else if (response.status === 409){
+            if (response.status === 409){
                 Swal.fire("Error", "Ya guardaste esta cancion!");
             }
         } catch (error) {
@@ -225,7 +214,6 @@ const SpotifySearchService = () => {
             });
 
             if (response.ok) {
-                console.log("Endpoint builded", response);
                 setIdPlaylistSelected(null);
             } else if (response.status === 409){
                 Swal.fire("Error", "Tu sesion caduco, inicia de sesion nuevamente!");

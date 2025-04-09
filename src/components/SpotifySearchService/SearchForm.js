@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons"; 
 import React, { useState } from "react";
 import { useSearch } from '../SearchContext';
+import Swal from 'sweetalert2';
+
 
 const SearchForm = ({onSearch}) =>{
 
@@ -17,7 +19,7 @@ const SearchForm = ({onSearch}) =>{
         if (searchTerm.trim() !== "") {
             onSearch(searchTerm);
         } else {
-            console.error("No hay nada que buscar!, por favor escribe algo");
+            Swal.fire("Error", "No hay nada que buscar!, por favor escribe algo!");
         }
     };
 

@@ -5,7 +5,6 @@ const UpdatePlaylistForm = ({updatePlaylist, formData, playlistSelected, handleI
     const { name } = formData; // Extrae 'name' del objeto 'playlistSelected'
     const { id } = playlistSelected; 
 
-    console.log(formData);
     return (
         <div className="center-table-form">
         <div class="card text-white bg-dark mb-3" style={{ maxWidth: "25rem" }}>

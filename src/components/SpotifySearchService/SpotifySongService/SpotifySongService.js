@@ -11,18 +11,15 @@ const SpotifySongService = () => {
         try {
             const response = await fetch(`${backEndUrl}/songs/get/${searchTerm}`);
             setSearchAction("Buscar");
-
-            if (response.ok) {
-                console.log("Endpoint builded", response);
-                console.log(response.json());
-            } else if (response.status === 404){
-                console.error("La canción no existe!", response.status);
+            
+            if (response.status === 404){
+                Swal.fire("Error", "La canción no existe!");
             }
-            else{
-                console.error("Aun no has iniciado sesion en Spotify o tu sesion ya expiró")
+            else if(!response.status === 404){
+                Swal.fire("Error", "Aun no has iniciado sesion en Spotify o tu sesion ya expiró!");
             }
         } catch (error) {
-            console.error("Error de red:", error);
+            Swal.fire("Error", "Error de red!");
         }
     };
 
